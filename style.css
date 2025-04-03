@@ -1,0 +1,63 @@
+body{
+    background-color: orange;
+}
+.fialova{
+    color: purple;
+}
+.zluta{
+    color:yellow
+}
+.cervena{
+    color: red;
+}
+.kytka{
+    width: 200px;
+    border-style: dashed;
+    border-width: 5px;
+    border-color: rgb(80, 0, 112);
+}
+.odkaz{
+    text-decoration: none;
+}
+.hlava{
+    text-align: center;
+    font-size: 20px;
+    color: blue;
+    width: auto;
+    height: 30px;
+    background-color: rgb(0, 162, 255);
+}
+.menu{
+    border: 1px;
+    width: auto;
+    height: 20px;
+    background-color: yellow;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+}
+h3{
+    text-align: center;
+}
+.telo{
+    border: 2px;
+    width: auto;
+    height: 800px;  
+    background-color: rgb(43, 255, 0);
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+
+}
+footer{
+    border: 2px;
+    width: auto;
+    height: auto;
+    background-color: red;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+}
+ul{
+    color: white;
+}
