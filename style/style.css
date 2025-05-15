@@ -1,0 +1,88 @@
+h1{
+  text-align: center;
+  font-size: 34pt;
+}
+h2 {
+    text-align: center;
+    color: #003b00;
+    text-decoration: underline;
+    font-size: 25pt;
+}
+h3 {
+    text-decoration: underline;
+    font-size: 17pt;
+    margin-left: 60px;
+}
+hr{
+  border: 1px solid black;
+}
+body{
+  background-color: #5aae25e1;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #3E7B27;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-right: 1px solid black;
+}
+
+.sidenav a {
+  padding: 5px 8px 8px 40px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+  transition: 0.3s; 
+  width: auto;
+  height: 33px;
+}
+
+
+.sidenav a:hover {
+   color: #EFE3C2;
+   background-color: #5aae25e1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+.vitej{
+    font-size:23pt;
+    margin-left:80px;
+}
+.o_nas{
+    font-size:15pt;
+    width:90%;
+    margin-left:80px;
+    text-align:justify;
+    line-height: 19pt;
+}
+
+.text_historie{
+    font-size: 15pt;
+    width: 90%;
+    margin-left: 80px;
+    line-height: 19pt;
+    text-align: justify;
+}
