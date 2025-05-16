@@ -1,17 +1,17 @@
 h1{
   text-align: center;
   font-size: 34pt;
+  color: black;
+}
+.KMK {
+    text-decoration: none;
+    color: black;
 }
 h2 {
     text-align: center;
     color: #003b00;
     text-decoration: underline;
     font-size: 25pt;
-}
-h3 {
-    text-decoration: underline;
-    font-size: 17pt;
-    margin-left: 60px;
 }
 hr{
   border: 1px solid black;
@@ -20,17 +20,17 @@ body{
   background-color: #5aae25e1;
 }
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #3E7B27;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  border-right: 1px solid black;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #3E7B27;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-right: 1px solid black;
 }
 
 .sidenav a {
@@ -71,6 +71,7 @@ body{
     font-size:23pt;
     margin-left:80px;
 }
+
 .o_nas{
     font-size:15pt;
     width:90%;
@@ -78,11 +79,68 @@ body{
     text-align:justify;
     line-height: 19pt;
 }
+.uvod1 {
+    text-align: center;
+    margin: 60px;
+}
+.uvod2 {
+    
+    width: 55%;
+    border-radius: 25px;
+    border: 4px solid #3E7B27;
+    box-shadow: black 10px 10px 25px;
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+.uvod2:hover{
+    transform: scale(1.2);
+}
+.popis {
+    text-align: center;
+    font-size: 15pt;
+}
 
+.histore_nadpis {
+    text-decoration: underline;
+    font-size: 17pt;
+    margin-left: 60px;
+}
 .text_historie{
     font-size: 15pt;
     width: 90%;
     margin-left: 80px;
     line-height: 19pt;
     text-align: justify;
+}
+
+
+.galerie_nadpis {
+    text-decoration: underline;
+    font-size: 17pt;
+    margin-left: 60px;
+}
+div.galerie {
+    margin: 4px 5px;
+    border: 1px solid black;
+    float: left;
+    width: 19%;
+    transition: 0.3s;
+}
+div.galerie:hover {
+    background-color: #5aae25e1;
+    color: #EFE3C2;
+    transition: 0.3s;
+    transform: scale(1.08);
+
+}
+div.galerie img{
+    width: 100%;
+    height: auto;
+}
+div.popisfoto{
+    padding: 15px;
+    text-align: center;
+}
+.mezera{
+    height: 100px;
 }
