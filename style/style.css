@@ -1,3 +1,6 @@
+/*nadpisy, pozadí atp*/
+/*dodìùávky: u fotografíí vymìnit z procent na pevnou šíøki, u blokù v aktualitách zmìnit z pevné šíøky na procenta.*/
+
 h1{
   text-align: center;
   font-size: 34pt;
@@ -22,6 +25,8 @@ hr{
 body {
     background-color: #5aae25e1;
 }
+/*menu*/
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -70,6 +75,8 @@ body {
     padding: 20px;
 }
 
+/*o nás*/
+
 .vitej{
     font-size:23pt;
     margin-left:80px;
@@ -102,6 +109,7 @@ body {
     text-align: center;
     font-size: 15pt;
 }
+/*historie*/
 
 .histore_nadpis {
     text-decoration: underline;
@@ -116,51 +124,58 @@ body {
     text-align: justify;
 }
 
+/*naše èinnost */
+.text_cinnost {
+    font-size: 15pt;
+    width: 90%;
+    margin-left: 80px;
+    line-height: 19pt;
+    text-align: justify;
+}
 
-.galerie_nadpis {
-    text-decoration: underline;
-    font-size: 17pt;
-    margin-left: 60px;
+/*naše èinnnost fotky*/
+.gallery_cin-container {
+    display: flex;
+    flex-wrap: wrap;
+    /*gap: 10px;*/
+    justify-content: center; /* nebo center, space-between... */
 }
-div.galerie {
+
+.galerie_cin {
+    background-color: #5aae25e1;
     margin: 4px 5px;
+    width: 300px;
     border: 1px solid black;
-    float: left;
-    width: 19%;
     transition: 0.3s;
-    overflow: hidden;
+    text-align: center;
+    color: black;
 }
-div.galerie:hover {
-    background-color: #5cb027;
-    color: #EFE3C2;
+
+.galerie_cin:hover {   
+    background-color: #3E7B27;
     transition: 0.3s;
     transform: scale(1.08);
+    color: #EFE3C2;
+}
 
-}
-div.galerie img{
+.galerie_cin img {
     width: 100%;
-    height: auto;
+    height: auto; /* nebo jiná výška podle potøeby */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
 }
-div.popisfoto {
-    padding: 10px;
+
+.desc_cin {
+    padding: 15px;
     text-align: center;
-    height: 50px;
-    display: flex;
-    flex-direction: column; /* umožní vertikální zarovnání víceøádkového obsahu */
-    justify-content: center; /* zarovnání textu svisle */
-}
-.cisteni{
-    clear: both;
-}
-.mezera{
-    height: 100px;
 }
 
 /*aktuality jednotný design*/
 .aktualita_blok {
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    width: 63%;
     height: auto;
     border: 1px solid black;
     padding: 20px;
@@ -180,10 +195,9 @@ div.popisfoto {
 }
 .text_aktuality {
     font-size: 15pt;
-    width: 90%;
-    margin-left: 80px;
     line-height: 19pt;
     text-align: center;
+    margin: 0 20px 0 20px;
 }
 .centr_fotek{
     text-align:center;
@@ -204,7 +218,7 @@ div.popisfoto {
 .galerie_akt {
     background-color: #5aae25e1;
     margin: 4px 5px;
-    width: 19%;
+    width: 225px;
     border: 1px solid black;
     transition: 0.3s;
     text-align: center;
@@ -244,19 +258,66 @@ div.popisfoto {
     transition:0.5s;
 }
 
+
+/*fotogalerie*/
+.galerie_nadpis {
+    text-decoration: underline;
+    font-size: 17pt;
+    margin-left: 60px;
+}
+
+div.galerie {
+    margin: 4px 5px;
+    border: 1px solid black;
+    float: left;
+    width: 19%;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+div.galerie:hover {
+    background-color: #5cb027;
+    color: #EFE3C2;
+    transition: 0.3s;
+    transform: scale(1.08);
+}
+
+div.galerie img {
+    width: 100%;
+    height: auto;
+}
+
+div.popisfoto {
+    padding: 10px;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    flex-direction: column; /* umožní vertikální zarovnání víceøádkového obsahu */
+    justify-content: center; /* zarovnání textu svisle */
+}
+
+.cisteni {
+    clear: both;
+}
+
+.mezera {
+    height: 100px;
+}
+
+/*kontakty*/
+.centr_kont{
+    text-align:center;
+}
+
 .text_kontakty {
     font-size: 15pt;
-    width: 90%;
-    margin-left: 80px;
     line-height: 19pt;
-    text-align: justify;
 }
 .mapadiv{
     padding: 30px;
 }
 .mapa {
     width: 600px;
-    margin-left: 80px;
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: black 10px 10px 25px;
@@ -270,7 +331,7 @@ div.popisfoto {
 .tabkontakty {
     color: black;
     width: 300px;
-    margin-left: 80px;
+    margin: auto;
     padding: 15px;
     border: 1px solid black;
     border-radius: 20px;
