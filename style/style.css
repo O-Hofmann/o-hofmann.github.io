@@ -152,7 +152,7 @@ body {
 }
 
 .galerie_cin:hover {   
-    background-color: #3E7B27;
+    background-color: #5cb027;
     transition: 0.3s;
     transform: scale(1.08);
     color: #EFE3C2;
