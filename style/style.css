@@ -6,7 +6,7 @@
     width: 90%;
     height: auto;
     padding: 8px 30px 8px 30px; /*odsazeni textu od okrajů*/
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 img{
@@ -142,7 +142,6 @@ body {
 .text_cinnost {
     font-size: 15pt;
     width: 90%;
-    margin-left: 80px;
     line-height: 19pt;
     text-align: justify;
 }
@@ -151,17 +150,18 @@ body {
 .gallery_cin-container {
     display: flex;
     flex-wrap: wrap;
-    /*gap: 10px;*/
     justify-content: center; /* nebo center, space-between... */
 }
 
 .galerie_cin {
     margin: 4px 5px;
-    width: 300px;
     border: 1px solid black;
+    float: left;
+    width: 19%;
+    height: auto;
     transition: 0.3s;
-    text-align: center;
-    color: black;
+    overflow: hidden;
+    border-radius: 5px;
 }
 
 .galerie_cin:hover {   
