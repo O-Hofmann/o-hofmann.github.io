@@ -291,6 +291,7 @@ div.galerie {
     transition: 0.3s;
     overflow: hidden;
     border-radius: 5px;
+    min-width: 130px;
 }
 
 div.galerie:hover {
