@@ -39,7 +39,7 @@ hr{
   border: 1px solid black;
 }
 body {
-    background-color: #77B254;
+    background-color: #5aae25e1;
 }
 /*menu*/
 
@@ -108,14 +108,16 @@ body {
     margin: 60px;
 }
 .uvod2 {
+    
+    
     border-radius: 25px;
-    border: 4px solid #9EDF9C;
+    border: 4px solid #3E7B27;
     box-shadow: black 10px 10px 25px;
     transition: transform 0.5s ease;
     transform-origin: center;
 }
 .uvod2:hover{
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 .popis {
     text-align: center;
@@ -158,11 +160,10 @@ body {
     transition: 0.3s;
     overflow: hidden;
     border-radius: 5px;
-    min-width: 200px;
 }
 
 .galerie_cin:hover {   
-    background-color: #355F2E;
+    background-color: #5cb027;
     transition: 0.3s;
     transform: scale(1.08);
     color: #EFE3C2;
@@ -226,6 +227,7 @@ body {
 }
 
 .galerie_akt {
+    background-color: #5aae25e1;
     margin: 4px 5px;
     width: 225px;
     border: 1px solid black;
@@ -235,7 +237,7 @@ body {
 }
 
 .galerie_akt:hover {   
-    background-color: #355F2E;
+    background-color: #3E7B27;
     transition: 0.3s;
     transform: scale(1.08);
     color: #EFE3C2;
@@ -293,7 +295,7 @@ div.galerie {
 }
 
 div.galerie:hover {
-    background-color: #355F2E;
+    background-color: #5cb027;
     color: #EFE3C2;
     transition: 0.3s;
     transform: scale(1.08);
@@ -305,7 +307,7 @@ div.galerie img {
 }
 
 div.popisfoto {
-    padding: 10px 5px 10px 5px;
+    padding: 10px 0px 10px 0px;
     text-align: center;
     height: auto;
     display: flex;
@@ -359,7 +361,7 @@ div.popisfoto {
 .tabkontakty:hover{
     transform: scale(1.15);
     transition: 0.5s;
-    background-color: #355F2E;
+    background-color: #5cb027;
     color: #EFE3C2;
 }
 .tabkontakty_nadpis{
