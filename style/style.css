@@ -128,7 +128,7 @@ body {
     font-size: 17pt;
 }
 .text_historie{
-    font-size: 15pt;
+    font-size: 15pt;    
     width: 90%;
     line-height: 19pt;
     text-align: justify;
@@ -258,12 +258,12 @@ body {
 
 
 /*aktuality �pravy jednotliv�ch p��sp�vk�*/
-.akt_nabor2025{
+.plakaty{
     width: 225px;
     border: 1px solid black;
     transition: 0.5s;
 }
-.akt_nabor2025:hover{
+.plakaty:hover{
     transform:scale(1.14);
     transition:0.5s;
 }
@@ -372,4 +372,66 @@ div.popisfoto {
 }
 .ig{
     width: 15px;
+}
+.partneri_nadpisy {
+    text-align: center;
+    font-size: 20pt;
+    text-decoration: none;
+    color: black;
+}
+.partneri_center {
+    text-align: center;
+}
+.osoblazka{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 20px;
+    max-width: 400px;
+    transition: 0.5s;
+}
+.osoblazka:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
+
+}
+.okd{
+    max-width: 400px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.okd:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+.ceps{
+    max-width: 400px;
+    border-style:solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.ceps:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu a {
+    font-size: 20px;
+    
+}
+
+.submenu-toggle {
+    cursor: pointer;
 }
