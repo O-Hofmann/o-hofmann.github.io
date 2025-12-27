@@ -24,11 +24,21 @@
         <hr>
         <a href="Aktuality.html">Aktuality</a>
         <hr>
-        <a href="fotogalerie.html">Fotogalerie</a> 
+        <a href="javascript:void(0)" class="submenu-toggle" onclick="toggleSubmenu()">
+            Fotogalerie ▾
+        </a>
+        <div id="fotogalerie-submenu" class="submenu">
+            <a href="gal_dulni-zeleznice.html">Důlní železnice</a>
+            <a href="gal_klubovna.html">Klubovna v Karviné</a>
+            <a href="gal_osoblazsko.html">Pobyty na Osoblažsku</a>
+            <a href="gal_vystavy-a-akce.html">Výstavy a akce</a>
+            <a href="gal_ostatni.html">Ostatní</a>
+        </div>
         <hr>
         <a href="kontakty.html">Kontakty</a>
         <hr>
-
+        <a href="partneri.html">Partneři a sponzoři</a>
+        <hr>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
     <div id="main">
@@ -38,18 +48,109 @@
         <br />
 
         <div class="aktualita_blok">
-            <p class="aktualita_nadpis">Hledáme nové členy!</p>
-            <p class="text_aktuality">Baví tě železnice nebo modelaření, jsi zručný/á a kamarádský/á? Umíš pracovat v týmu a rád by ses účastnil/a zajímavých projektů? Možná hledáš právě nás!</p>
-            <p class="text_aktuality">Hledáme jakékoli zájemce od věku 12 let, ať už jsi teenager nebo dospělý! Zaujali jsme tě? Ozvi se nám a přijď se podívat do našeho kolektivu. Pokud máš jakékoli otázky, neboj se nás na ně zeptat!</p>
-            <p class="centr_fotek"> <a target="_blank" href="Obrazky/Aktuality/Nabor_2025/plakat.jpg"><img class="akt_nabor2025" src="Obrazky/Aktuality/Nabor_2025/plakat.jpg" /></a> </p>
+            <p class="aktualita_nadpis">Výstava v Karviné 15. a 16. listopadu</p>
+            <p class="text_aktuality">O víkendu 15. a 16. listopadu se zúčastníme výstavy železničních a dalších modelů. K vidění bude modulové kolejiště ve velikosti TT, modelové domečky, Rc modely nákladních aut a další. Nás zde uvidíte s Gčkovým kolejištěm.</p>
+            <p class="text_aktuality"> <a target="_blank" href="https://www.juventus.cz/program-akci/4001-vystava-nejen-zeleznicnich-modelu">Více info zde</a> </p>
+            <p class="centr_fotek"> <a target="_blank" href="Obrazky/Aktuality/Pozvanka_karvina_podzim25/Plakat_juventus_podzim25.jpg"> <img class="plakaty" src="Obrazky/Aktuality/Pozvanka_karvina_podzim25/Plakat_juventus_podzim25.jpg" /> </a> </p>
+            <p>Publikováno 30. 10. 2025</p>
+
         </div>
 
         <div class="mezeradiv"></div>
 
         <div class="aktualita_blok">
-            <p class="aktualita_nadpis">Návštěva lesní železnice v Rajnochovicích</p>
+            <p class="aktualita_nadpis">Výstava na Slezskoostravském hradě!</p>
+            <p class="text_aktuality">O víkendu 18. a 19. října se zúčastníme výstavy na Slezskoostravském hradě v Ostravě společně s Slezskými železničními modeláří a Železničními modeláři Karviná.</p>
+            <p class="text_aktuality">Budeme ude vystavovat kolejiště ve velikosti G a možná i něco navíc!</p>
+            <div class="text_aktuality">
+                <a target="_blank" href="https://www.slezskoostravskyhrad.cz/cz/akce/436-slezsti-zeleznicni-modelari-na-hrade.html">Více info zde</a>
+            </div>
+           <p class="centr_fotek"> <a target="_blank" href="Obrazky/Aktuality/Vystava_Ostrava_hrad2025/Vystava_Ostrava_hrad2025.jpeg"><img class="plakaty" src="Obrazky/Aktuality/Vystava_Ostrava_hrad2025/Vystava_Ostrava_hrad2025.jpeg" /></a> </p>
+
+            <p>Publikováno 29. 9. 2025</p>
+        </div>
+
+        <div class="mezeradiv"></div>
+
+        <div class="aktualita_blok">
+            <p class="aktualita_nadpis">Hledáme nové členy!</p>
+            <p class="text_aktuality">Baví tě železnice nebo modelaření, jsi zručný/á a kamarádský/á? Umíš pracovat v týmu a rád by ses účastnil/a zajímavých projektů? Možná hledáš právě nás!</p>
+            <p class="text_aktuality">Hledáme jakékoli zájemce od věku 12 let, ať už jsi teenager nebo dospělý! Zaujali jsme tě? Ozvi se nám a přijď se podívat do našeho kolektivu. Pokud máš jakékoli otázky, neboj se nás na ně zeptat!</p>
+            <p class="centr_fotek"> <a target="_blank" href="Obrazky/Aktuality/Nabor_2025/plakat.jpg"><img class="plakaty" src="Obrazky/Aktuality/Nabor_2025/plakat.jpg" /></a> </p>
+            <p>Publikovano 9. 9. 2025</p>
+        </div>
+
+        <div class="mezeradiv"></div>
+
+        <div class="aktualita_blok">
+            <p class="aktualita_nadpis">Letní akce na Osoblažsku</p>
+            <p class="text_aktuality">V červenci jsme se zúčastnili hned dvou akcí na Osoblažsku. 12. na Fajném létě v Osoblaze ve spolupráci s Osoblažskou úzkokolejkou a 26. akce Osoblažení v Horních Povelicích.</p>
+            <p class="text_aktuality">Na obou akcích jsme vystavovali cestovní kolejiště e velikosti H0 se třemi různými rozchody, kolejiště a vláčky ve velikosti G, lego kolejiště pro děti, výstražník AŽD 97 a část z odjezdové tabule Pragotron.</p>
+
+            <div class="gallery_akt-container">
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-1.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-1.jpg" />
+                    </a>
+                    <div class="desc">Společný stánek s Osoblažkou na Osoblažení</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-2.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-2.jpg" />
+                    </a>
+                    <div class="desc">Cestovní kolejiště H0 s několika rozchody</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-3.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-3.jpg" />
+                    </a>
+                    <div class="desc">Cestovní kolejiště H0 s několika rozchody</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-4.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-4.jpg" />
+                    </a>
+                    <div class="desc">Výstražník AŽD 97 vystavený na akci.</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-5.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-5.jpg" />
+                    </a>
+                    <div class="desc">Souprava s parní lokomotivou ve velikosti G</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-6.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-6.jpg" />
+                    </a>
+                    <div class="desc">Lego kolejiště pro děti</div>
+                </div>
+
+                <div class="galerie_akt">
+                    <a target="_blank" href="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-7.jpg">
+                        <img src="Obrazky/Aktuality/Osoblazske_leto2025/Osoblazske_leto2025-7.jpg" />
+                    </a>
+                    <div class="desc">Všechny soupravy jezdící na lego kolejišti</div>
+                </div>
+
+            </div>
+
+
+            <p>Publikovano 9. 9. 2025</p>
+
+        </div>
+
+        <div class="mezeradiv"></div>
+
+        <div class="aktualita_blok">
+            <p class="aktualita_nadpis">Návštěva v lesní železnice v Rajnochovicích</p>
             <p class="text_aktuality">
-                Ve čtvrtek 8. května 2025 jsme se vydali na návštěvu ke "kolegům" na rozchodu 600 mm do Rajnochovic. Návštěvu určitě doporučujeme všem příznivcům. Jelikož na důlním rozchodu teprve začínáme, byli jsme rádi za každou radu, kterou nám chlapi dali. Od rad se stavbou kolejí, až po údržbu lokomotiv. Prohlédli jsme si jejich veškeré zázemí, depo, vozový park a také celou trať. Získali informace, co je nejlepší a nejdůležitější získat pro budoucí provoz. Všichni jsme měli možnost si vyzkoušet takovou lokomotivu vést, za což obrovské DÍKY!
+                Ve čtvrtek 8. května 2025 jsme se vydali na návštěvu ke "kolegům" na rozchodu 600mm do Rajnochovic. Návštěvu určitě doporučujeme všem příznivcům. Jelikož na důlním rozchodu teprve začínáme, byli jsme rádi za každou radu, kterou nám chlapi dali. Od rad se stavbou kolejí, až po údržbu lokomotiv. Prohlédli jsme si jejich veškeré zázemí, depo vozový park a také celou trať. Získali informace, co je nejlepší a nejdůležitější získat pro budoucí provoz. Všichni jsme měli možnost si vyzkoušet takovou lokomotivu vést, za což obrovské DÍKY!
             </p>
 
             <div class="gallery_akt-container">
@@ -110,6 +211,8 @@
                 </div>
             </div>
 
+            <p>Publikovano 17. 8. 2025</p>
+
         </div>
 
 
@@ -118,9 +221,9 @@
 
         <div class="cisteni"></div>
 
-        <div class="aktualita_blok">
-            <p class="text_aktuality">***</p>
-        </div>
+        <!--<div class="aktualita_blok">
+        <p class="text_aktuality"></p>
+    </div>-->
 
     </div>
 </body>
