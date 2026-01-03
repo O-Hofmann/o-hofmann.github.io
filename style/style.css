@@ -65,7 +65,7 @@ body {
   display: block;
   transition: 0.3s; 
   width: auto;
-  min-width: 650px;
+  min-width: 80%;
   height: 33px;
 }
 
