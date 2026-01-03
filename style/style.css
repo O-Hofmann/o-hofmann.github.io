@@ -3,7 +3,7 @@
 .prizpusobeni{
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    width: 85%;
     height: auto;
     padding: 8px 30px 8px 30px; /*odsazeni textu od okrajů*/
     /*border: 1px solid black;*/
@@ -65,7 +65,6 @@ body {
   display: block;
   transition: 0.3s; 
   width: auto;
-  min-width: 80%;
   height: 33px;
 }
 
@@ -435,4 +434,8 @@ div.popisfoto {
 
 .submenu-toggle {
     cursor: pointer;
+}
+
+.zmrd{
+    min-width: 1000px;
 }
