@@ -1,97 +1,113 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css?v=2">
-    <link rel="icon" href="Obrazky/favicon.ico" />
-
-    <title>Kontakty KMK</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakty – Klub malých kolejí</title>
+<meta name="description" content="Kontakty a adresa klubovny Klubu malých kolejí na hlavním nádraží v Karviné.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/style.css?v=3">
 </head>
 <body>
-    <h1> <a class="KMK" href="index.html">KLUB MALÝCH KOLEJÍ</a>  </h1>
-    <hr>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
 
-    <script src="/script/scriptc.js?v=2"></script>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <hr>
-        <a href="index.html">O nás</a>
-        <hr>
-        <a href="historie.html">Historie</a>
-        <hr>
-        <a href="Nase_cinnost.html">Naše činnost</a>
-        <hr>
-        <a href="Aktuality.html">Aktuality</a>
-        <hr>
-        <a href="javascript:void(0)" class="submenu-toggle" onclick="toggleSubmenu()">
-            Fotogalerie ▾
-        </a>
-        <div id="fotogalerie-submenu" class="submenu">
-            <a href="gal_dulni-zeleznice.html">Důlní železnice</a>
-            <a href="gal_klubovna.html">Klubovna v Karviné</a>
-            <a href="gal_osoblazsko.html">Pobyty na Osoblažsku</a>
-            <a href="gal_vystavy-a-akce.html">Výstavy a akce</a>
-            <a href="gal_projekty.html">Projekty</a>
-            <a href="gal_ostatni.html">Ostatní</a>
-        </div>
-        <hr>
-        <a href="kontakty.html">Kontakty</a>
-        <hr>
-        <a href="partneri.html">Partneři a sponzoři</a>
-        <hr>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Klub malých kolejí</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">☰ Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hlavní navigace">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">O nás</a></li>
+        <li><a class="nav-link" href="historie.html">Historie</a></li>
+        <li><a class="nav-link" href="Nase_cinnost.html">Naše činnost</a></li>
+        <li><a class="nav-link" href="Aktuality.html">Aktuality</a></li>
+        <li class="has-sub" id="gallery-menu"><button class="nav-link" type="button" aria-expanded="false" aria-haspopup="true">Fotogalerie ▾</button><div class="sub"><a class="nav-link" href="fotogalerie.html">Přehled galerií</a><a class="nav-link" href="gal_dulni-zeleznice.html">Důlní železnice</a><a class="nav-link" href="gal_klubovna.html">Klubovna v Karviné</a><a class="nav-link" href="gal_osoblazsko.html">Pobyty na Osoblažsku</a><a class="nav-link" href="gal_vystavy-a-akce.html">Výstavy a akce</a><a class="nav-link" href="gal_projekty.html">Projekty</a><a class="nav-link" href="gal_ostatni.html">Ostatní</a></div></li>
+        <li><a class="nav-link" aria-current="page" href="kontakty.html">Kontakty</a></li>
+        <li><a class="nav-link" href="partneri.html">Partneři a sponzoři</a></li>
+        <li><a class="nav-link nav-login" href="https://kmk.rumcajs.com/login"><img src="Obrazky/login.png" alt="">Log-in</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
+<main id="obsah">
+<div class="page-head">
+  <div class="wrap">
+    
+    <h1>Kontakty</h1>
+    <div class="track" aria-hidden="true"></div>
+  </div>
+</div>
+<section class="section">
+  <div class="wrap">
+    <p class="lead">Kde nás naleznete? Klubovnu máme tematicky přímo na 1. nástupišti karvinského hlavního nádraží!</p>
+    <div class="contact-photos">
+      <figure class="photo">
+        <a href="https://mapy.com/cs/zakladni?source=firm&amp;id=14004135&amp;ds=1&amp;x=18.5268753&amp;y=49.8561181&amp;z=17" target="_blank" rel="noopener">
+          <img src="Obrazky/kontakty/mapka_klubovna1.webp" alt="Mapa s polohou klubovny" loading="lazy" decoding="async"></a>
+      </figure>
+      <div data-lightbox>
+        <figure class="photo">
+          <a href="Obrazky/kontakty/vstup_klubovna1.webp">
+            <img src="Obrazky/kontakty/vstup_klubovna1.webp" alt="Vstup do naší klubovny" loading="lazy" decoding="async"></a>
+          <figcaption>Vstup do naší klubovny</figcaption>
+        </figure>
+      </div>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-    <div id="main">
 
+    <p class="lead lead--spaced">A jak nás můžete kontaktovat? Třeba jedním z těchto způsobů!</p>
+    <div class="contact-grid">
+      <div class="panel">
         <h2>Kontakty</h2>
-
-        <div class="centr_kont">
-            <p class="text_kontakty">Kde nás naleznete? Klubovnu máme tematicky přímo na 1. nástupišti karvinského hlavního nádraží!</p>
-            <div class="mapadiv">
-                <a target="_blank" href="https://mapy.com/s/gavomolume">
-                    <img class="mapa" src="Obrazky/kontakty/mapka_klubovna.JPG" />
-                </a>
-            </div>
-            <p class="text_kontakty">Karviná - Fryštát, Nádražní 695/7</p>
-
-            <p class="text_kontakty">A jak nás můžete kontaktovat? Třeba jedním z těchto způsobů!</p>
-
-            <div class="tabkontakty">
-                <ul>
-                    <li class="tabkontakty_nadpis">
-                        E-mail
-                        <ul>
-                            <li class="tabkontakty_odrazka">malekoleje@malekoleje.cz</li>
-                            <li class="tabkontakty_odrazka">Vedoucí: rroubic@gmail.com</li>
-                        </ul>
-                    </li>
-                    <li class="tabkontakty_nadpis">
-                        Telefon
-                        <ul>
-                            <li class="tabkontakty_odrazka">Vedoucí: 777552682</li>
-                            <li class="tabkontakty_odrazka">Případně p. Hofmann: 736650886</li>
-                        </ul>
-                    </li>
-
-                    <li class="tabkontakty_nadpis">
-                        Instagram 
-                        <ul><li class="tabkontakty_odrazka">kmk_karvina <a target="_blank" href="https://www.instagram.com/kmk_karvina/"><img class="ig" src="Obrazky/kontakty/ig.png" /></a></li></ul>
-                        <ul><li class="tabkontakty_odrazka">zachranme_dulni_drahu <a target="_blank" href="https://www.instagram.com/zachranme_dulni_drahu/"><img class="ig" src="Obrazky/kontakty/ig.png" /></a></li></ul>
-                    </li>
-                </ul>
-            </div>
-
-
-
-
+        <ul class="contact-lines">
+          <li>Klub malých kolejí, z.s.</li>
+          <li>Adresa: Karviná - Fryštát, Nádražní 695/7, 733 01</li>
+          <li>IČO: 22891064</li>
+          <li>E-mail: <a href="mailto:malekoleje@malekoleje.cz">malekoleje@malekoleje.cz</a></li>
+          <li>Datová schránka: hk2uh6i</li>
+        </ul>
+        <h3>Rada klubu</h3>
+        <div class="people">
+          <div class="person"><strong>Ondřej Hofmann</strong>
+            <span>E-mail: <a href="mailto:hofmannondrej@gmail.com">hofmannondrej@gmail.com</a></span>
+            <span>Telefon: <a href="tel:+420736650886">+420 736 650 886</a></span></div>
+          <div class="person"><strong>Rostislav Roubic</strong>
+            <span>E-mail: <a href="mailto:rroubic@seznam.cz">rroubic@seznam.cz</a></span>
+            <span>Telefon: <a href="tel:+420777552682">+420 777 552 682</a></span></div>
+          <div class="person"><strong>Jakub Frömmel</strong>
+            <span>E-mail: <a href="mailto:jacobfrommel@seznam.cz">jacobfrommel@seznam.cz</a></span>
+            <span>Telefon: <a href="tel:+420703351500">+420 703 351 500</a></span></div>
         </div>
-
+      </div>
+      <div class="panel">
+        <h2>Další užitečné odkazy</h2>
+        <ul class="contact-lines">
+          <li>Instagram kmk: <a href="https://www.instagram.com/kmk_karvina/">kmk_karvina<img class="ig" src="Obrazky/kontakty/ig.webp" alt=""></a></li>
+          <li>Instagram o důlní železnici: <a href="https://www.instagram.com/zachranme_dulni_drahu/">zachranme_dulni_drahu<img class="ig" src="Obrazky/kontakty/ig.webp" alt=""></a></li>
+          <li>Náš profil na firmách.cz: <a target="_blank" rel="noopener" href="https://www.firmy.cz/detail/14004135-klub-malych-koleji-karvina-frystat.html">Firmy.cz</a></li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
+</main>
 
-    
-    
-    <div class="mezeradiv"></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>Klub malých kolejí, z.s., Karviná</div>
+    <div>
+      <a href="Aktuality.html">Aktuality</a>
+      <a href="kontakty.html">Kontakty</a>
+      <a href="partneri.html">Partneři a sponzoři</a>
+      <a href="https://www.instagram.com/kmk_karvina/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script/scriptc.js?v=3" defer></script>
 </body>
 </html>

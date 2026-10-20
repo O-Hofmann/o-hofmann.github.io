@@ -1,372 +1,134 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css?v=2">
-    <link rel="icon" href="Obrazky/favicon.ico" />
-
-    <title>Fotogalerie KMK</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projekty – Klub malých kolejí</title>
+<meta name="description" content="Fotogalerie Klubu malých kolejí: Projekty.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/style.css?v=3">
 </head>
 <body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
 
-    <h1> <a class="KMK" href="index.html">KLUB MALÝCH KOLEJÍ</a>  </h1>
-    <hr>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Klub malých kolejí</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">☰ Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hlavní navigace">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">O nás</a></li>
+        <li><a class="nav-link" href="historie.html">Historie</a></li>
+        <li><a class="nav-link" href="Nase_cinnost.html">Naše činnost</a></li>
+        <li><a class="nav-link" href="Aktuality.html">Aktuality</a></li>
+        <li class="has-sub" id="gallery-menu"><button class="nav-link is-current" type="button" aria-expanded="false" aria-haspopup="true">Fotogalerie ▾</button><div class="sub"><a class="nav-link" href="fotogalerie.html">Přehled galerií</a><a class="nav-link" href="gal_dulni-zeleznice.html">Důlní železnice</a><a class="nav-link" href="gal_klubovna.html">Klubovna v Karviné</a><a class="nav-link" href="gal_osoblazsko.html">Pobyty na Osoblažsku</a><a class="nav-link" href="gal_vystavy-a-akce.html">Výstavy a akce</a><a class="nav-link" aria-current="page" href="gal_projekty.html">Projekty</a><a class="nav-link" href="gal_ostatni.html">Ostatní</a></div></li>
+        <li><a class="nav-link" href="kontakty.html">Kontakty</a></li>
+        <li><a class="nav-link" href="partneri.html">Partneři a sponzoři</a></li>
+        <li><a class="nav-link nav-login" href="https://kmk.rumcajs.com/login"><img src="Obrazky/login.png" alt="">Log-in</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <script src="/script/scriptc.js?v=2"></script>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <hr>
-        <a href="index.html">O nás</a>
-        <hr>
-        <a href="historie.html">Historie</a>
-        <hr>
-        <a href="Nase_cinnost.html">Naše činnost</a>
-        <hr>
-        <a href="Aktuality.html">Aktuality</a>
-        <hr>
-        <a href="javascript:void(0)" class="submenu-toggle" onclick="toggleSubmenu()">
-            Fotogalerie ▾
-        </a>
-        <div id="fotogalerie-submenu" class="submenu">
-            <a href="gal_dulni-zeleznice.html">Důlní železnice</a>
-            <a href="gal_klubovna.html">Klubovna v Karviné</a>
-            <a href="gal_osoblazsko.html">Pobyty na Osoblažsku</a>
-            <a href="gal_vystavy-a-akce.html">Výstavy a akce</a>
-            <a href="gal_projekty.html">Projekty</a>
-            <a href="gal_ostatni.html">Ostatní</a>
-        </div>
-        <hr>
-        <a href="kontakty.html">Kontakty</a>
-        <hr>
-        <a href="partneri.html">Partneři a sponzoři</a>
-        <hr>
+<main id="obsah">
+<div class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="fotogalerie.html">Fotogalerie</a></p>
+    <h1>Projekty</h1>
+    <div class="track" aria-hidden="true"></div>
+  </div>
+</div>
+<section class="section"><div class="wrap">
+<div class="albums">
+<section class="album" id="renovace-brzdarskeho-vozu" data-title="Renovace brzdařského vozu">
+<h2 class="album-title">Renovace brzdařského vozu</h2>
+<div class="photos" data-lightbox>
+<figure class="photo"><a href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-5.webp"><img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-5.webp" alt="Vykládka nahrádních dílů do skladu v Třemesné" loading="lazy" decoding="async"></a><figcaption>Vykládka nahrádních dílů do skladu v Třemesné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-4.webp"><img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-4.webp" alt="Vykládka nahrádních dílů do skladu v Třemesné" loading="lazy" decoding="async"></a><figcaption>Vykládka nahrádních dílů do skladu v Třemesné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-3.webp"><img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-3.webp" alt="Vytažený vůz na nádraží v Třemešné" loading="lazy" decoding="async"></a><figcaption>Vytažený vůz na nádraží v Třemešné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-2.webp"><img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-2.webp" alt="Vytažený vůz na nádraží v Třemešné" loading="lazy" decoding="async"></a><figcaption>Vytažený vůz na nádraží v Třemešné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-1.webp"><img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-1.webp" alt="Odstavený brzdařský vůz před akcí" loading="lazy" decoding="async"></a><figcaption>Odstavený brzdařský vůz před akcí</figcaption></figure>
+</div>
+</section>
+<section class="album" id="oprava-elektriky-na-cestovnim-kolejisti" data-title="Oprava elektriky na cestovním kolejišti">
+<h2 class="album-title">Oprava elektriky na cestovním kolejišti</h2>
+<div class="photos" data-lightbox>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-42.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-42.webp" alt="Hotová dvojice nových pultů" loading="lazy" decoding="async"></a><figcaption>Hotová dvojice nových pultů</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-41.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-41.webp" alt="Ostvětlené kolejiště" loading="lazy" decoding="async"></a><figcaption>Ostvětlené kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-40.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-40.webp" alt="Finální kontrola správného zapojení" loading="lazy" decoding="async"></a><figcaption>Finální kontrola správného zapojení</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-39.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-39.webp" alt="Hotový pult pro ovládání osvětlení" loading="lazy" decoding="async"></a><figcaption>Hotový pult pro ovládání osvětlení</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-38.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-38.webp" alt="Sešroubovaný pult s přepínači" loading="lazy" decoding="async"></a><figcaption>Sešroubovaný pult s přepínači</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-37.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-37.webp" alt="Zapojování propojovacího kabelu s pultem" loading="lazy" decoding="async"></a><figcaption>Zapojování propojovacího kabelu s pultem</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-36.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-36.webp" alt="Zapojování propojovacího kabelu s pultem" loading="lazy" decoding="async"></a><figcaption>Zapojování propojovacího kabelu s pultem</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-35.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-35.webp" alt="Výrobba konstrukce pultu" loading="lazy" decoding="async"></a><figcaption>Výrobba konstrukce pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-34.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-34.webp" alt="Výrobba konstrukce pultu" loading="lazy" decoding="async"></a><figcaption>Výrobba konstrukce pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-33.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-33.webp" alt="Výrobba konstrukce pultu" loading="lazy" decoding="async"></a><figcaption>Výrobba konstrukce pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-32.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-32.webp" alt="Vyřezaný pult pro ovládání osvětlení kolejiště" loading="lazy" decoding="async"></a><figcaption>Vyřezaný pult pro ovládání osvětlení kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-31.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-31.webp" alt="Návrh nového pultu pro ovládání osvětlení kolejiště" loading="lazy" decoding="async"></a><figcaption>Návrh nového pultu pro ovládání osvětlení kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-30.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-30.webp" alt="Připojení přívodů na jednotné místo pro budoucí pult" loading="lazy" decoding="async"></a><figcaption>Připojení přívodů na jednotné místo pro budoucí pult</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-29.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-29.webp" alt="Připojení přívodů na jednotné místo pro budoucí pult" loading="lazy" decoding="async"></a><figcaption>Připojení přívodů na jednotné místo pro budoucí pult</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-28.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-28.webp" alt="Pult instalovaný na kolejiště" loading="lazy" decoding="async"></a><figcaption>Pult instalovaný na kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-27.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-27.webp" alt="Pult instalovaný na kolejiště" loading="lazy" decoding="async"></a><figcaption>Pult instalovaný na kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-26.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-26.webp" alt="Zapojení pultu na kolejiště" loading="lazy" decoding="async"></a><figcaption>Zapojení pultu na kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-25.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-25.webp" alt="Druhá strana pultu" loading="lazy" decoding="async"></a><figcaption>Druhá strana pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-24.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-24.webp" alt="Nastříkaný pult s přepínači a tlačítky." loading="lazy" decoding="async"></a><figcaption>Nastříkaný pult s přepínači a tlačítky.</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-23.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-23.webp" alt="Finální nástřik pultu" loading="lazy" decoding="async"></a><figcaption>Finální nástřik pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-22.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-22.webp" alt="Finální nástřik pultu" loading="lazy" decoding="async"></a><figcaption>Finální nástřik pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-21.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-21.webp" alt="Finální nástřik pultu" loading="lazy" decoding="async"></a><figcaption>Finální nástřik pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-20.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-20.webp" alt="Příprava na finální nástřik pultu" loading="lazy" decoding="async"></a><figcaption>Příprava na finální nástřik pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-19.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-19.webp" alt="Vyvrtání děr na přepínače a tlačítka" loading="lazy" decoding="async"></a><figcaption>Vyvrtání děr na přepínače a tlačítka</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-18.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-18.webp" alt="První stříkání pultu" loading="lazy" decoding="async"></a><figcaption>První stříkání pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-17.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-17.webp" alt="První stříkání pultu" loading="lazy" decoding="async"></a><figcaption>První stříkání pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-16.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-16.webp" alt="Nachystaný pult na první nástřik" loading="lazy" decoding="async"></a><figcaption>Nachystaný pult na první nástřik</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-15.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-15.webp" alt="Deska pro výrobu nového pultu" loading="lazy" decoding="async"></a><figcaption>Deska pro výrobu nového pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-14.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-14.webp" alt="Deska pro výrobu nového pultu" loading="lazy" decoding="async"></a><figcaption>Deska pro výrobu nového pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-13.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-13.webp" alt="Již připevnené lišty pro novou kabeláž" loading="lazy" decoding="async"></a><figcaption>Již připevnené lišty pro novou kabeláž</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-12.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-12.webp" alt="Plán původního zapojení kolejiště" loading="lazy" decoding="async"></a><figcaption>Plán původního zapojení kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-11.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-11.webp" alt="Připevnění lišet pro novou kabeláž" loading="lazy" decoding="async"></a><figcaption>Připevnění lišet pro novou kabeláž</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-10.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-10.webp" alt="Připevnění lišet pro novou kabeláž" loading="lazy" decoding="async"></a><figcaption>Připevnění lišet pro novou kabeláž</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-9.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-9.webp" alt="Připevnění lišet pro novou kabeláž" loading="lazy" decoding="async"></a><figcaption>Připevnění lišet pro novou kabeláž</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-8.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-8.webp" alt="Připevnění lišet pro novou kabeláž" loading="lazy" decoding="async"></a><figcaption>Připevnění lišet pro novou kabeláž</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-7.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-7.webp" alt="Rozebírání staré kabeláže" loading="lazy" decoding="async"></a><figcaption>Rozebírání staré kabeláže</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-6.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-6.webp" alt="Rozebírání staré kabeláže" loading="lazy" decoding="async"></a><figcaption>Rozebírání staré kabeláže</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-5.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-5.webp" alt="Rozebírání staré kabeláže" loading="lazy" decoding="async"></a><figcaption>Rozebírání staré kabeláže</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-4.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-4.webp" alt="Rozebírání staré kabeláže" loading="lazy" decoding="async"></a><figcaption>Rozebírání staré kabeláže</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-3.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-3.webp" alt="Překreslení plánu kolejiště" loading="lazy" decoding="async"></a><figcaption>Překreslení plánu kolejiště</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-2.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-2.webp" alt="Rozebírání původního pultu" loading="lazy" decoding="async"></a><figcaption>Rozebírání původního pultu</figcaption></figure>
+<figure class="photo"><a href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-1.webp"><img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-1.webp" alt="Pohled na cestovní kolejiště před opravou" loading="lazy" decoding="async"></a><figcaption>Pohled na cestovní kolejiště před opravou</figcaption></figure>
+</div>
+</section>
+<section class="album" id="renovace-a-zprovozeni-petisvetelneho-navestidla" data-title="Renovace a zprovozění pětisvětelného návěstidla">
+<h2 class="album-title">Renovace a zprovozění pětisvětelného návěstidla</h2>
+<div class="photos" data-lightbox>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-7.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-7.webp" alt="Umývání návěstidla po zaplavení při povodni" loading="lazy" decoding="async"></a><figcaption>Umývání návěstidla po zaplavení při povodni</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-6.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-6.webp" alt="Převoz návěstidla na myčku" loading="lazy" decoding="async"></a><figcaption>Převoz návěstidla na myčku</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-5.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-5.webp" alt="Převoz návěstidla na myčku" loading="lazy" decoding="async"></a><figcaption>Převoz návěstidla na myčku</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.webp" alt="Rozebrání a očištění částí návěstidla" loading="lazy" decoding="async"></a><figcaption>Rozebrání a očištění částí návěstidla</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-3.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-3.webp" alt="Přeprava návěstidla z Bohušova do klubovny v Karviné" loading="lazy" decoding="async"></a><figcaption>Přeprava návěstidla z Bohušova do klubovny v Karviné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-2.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-2.webp" alt="Přeprava návěstidla z Bohušova do klubovny v Karviné" loading="lazy" decoding="async"></a><figcaption>Přeprava návěstidla z Bohušova do klubovny v Karviné</figcaption></figure>
+<figure class="photo"><a href="Obrazky/galerie_petisvetlo1/petisvetlo_1-1.webp"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-1.webp" alt="Přeprava návěstidla z Bohušova do klubovny v Karviné" loading="lazy" decoding="async"></a><figcaption>Přeprava návěstidla z Bohušova do klubovny v Karviné</figcaption></figure>
+</div>
+</section>
+</div>
+</div></section>
+</main>
 
+<footer class="site-footer">
+  <div class="wrap">
+    <div>Klub malých kolejí, z.s., Karviná</div>
+    <div>
+      <a href="Aktuality.html">Aktuality</a>
+      <a href="kontakty.html">Kontakty</a>
+      <a href="partneri.html">Partneři a sponzoři</a>
+      <a href="https://www.instagram.com/kmk_karvina/" target="_blank" rel="noopener">Instagram</a>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-    <div id="main">
-
-        <h2>Projekty</h2>
-        <br />
-        <br />
-
-        <h3 class="galerie_nadpis">Renovace brzdařského vozu</h3>
-
-        <div class="gallery-container" ¨>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-1.jpg">
-                    <img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-1.jpg" />
-                </a>
-                <div class="popisfoto">Odstavený brzdařský vůz před akcí</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-2.jpg">
-                    <img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-2.jpg" />
-                </a>
-                <div class="popisfoto">Vytažený vůz na nádraží v Třemešné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-3.jpg">
-                    <img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-3.jpg" />
-                </a>
-                <div class="popisfoto">Vytažený vůz na nádraží v Třemešné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-4.jpg">
-                    <img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-4.jpg" />
-                </a>
-                <div class="popisfoto">Vykládka nahrádních dílů do skladu v Třemesné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-5.jpg">
-                    <img src="Obrazky/galerie_brzdarsky-vuz/brzdarsky_vuz-5.jpg" />
-                </a>
-                <div class="popisfoto">Vykládka nahrádních dílů do skladu v Třemesné</div>
-            </div>
-
-
-        </div>
-
-
-
-        <h3 class="galerie_nadpis">Oprava elektriky na cestovním kolejišti</h3>
-
-        <div class="gallery-container">
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-1.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-1.jpg" />
-                </a>
-                <div class="popisfoto">Pohled na cestovní kolejiště před opravou</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-2.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-2.jpg" />
-                </a>
-                <div class="popisfoto">Rozebírání původního pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-3.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-3.jpg" />
-                </a>
-                <div class="popisfoto">Překreslení plánu kolejiště</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-4.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-4.jpg" />
-                </a>
-                <div class="popisfoto">Rozebírání staré kabeláže</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-5.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-5.jpg" />
-                </a>
-                <div class="popisfoto">Rozebírání staré kabeláže</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-6.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-6.jpg" />
-                </a>
-                <div class="popisfoto">Rozebírání staré kabeláže</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-7.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-7.jpg" />
-                </a>
-                <div class="popisfoto">Rozebírání staré kabeláže</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-8.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-8.jpg" />
-                </a>
-                <div class="popisfoto">Připevnění lišet pro novou kabeláž</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-9.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-9.jpg" />
-                </a>
-                <div class="popisfoto">Připevnění lišet pro novou kabeláž</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-10.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-10.jpg" />
-                </a>
-                <div class="popisfoto">Připevnění lišet pro novou kabeláž</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-11.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-11.jpg" />
-                </a>
-                <div class="popisfoto">Připevnění lišet pro novou kabeláž</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-12.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-12.jpg" />
-                </a>
-                <div class="popisfoto">Plán původního zapojení kolejiště</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-13.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-13.jpg" />
-                </a>
-                <div class="popisfoto">Již připevnené lišty pro novou kabeláž</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-14.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-14.jpg" />
-                </a>
-                <div class="popisfoto">Deska pro výrobu nového pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-15.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-15.jpg" />
-                </a>
-                <div class="popisfoto">Deska pro výrobu nového pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-16.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-16.jpg" />
-                </a>
-                <div class="popisfoto">Nachystaný pult na první nástřik</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-17.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-17.jpg" />
-                </a>
-                <div class="popisfoto">První stříkání pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-18.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-18.jpg" />
-                </a>
-                <div class="popisfoto">První stříkání pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-19.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-19.jpg" />
-                </a>
-                <div class="popisfoto">Vyvrtání děr na přepínače a tlačítka</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-20.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-20.jpg" />
-                </a>
-                <div class="popisfoto">Příprava na finální nástřik pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-21.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-21.jpg" />
-                </a>
-                <div class="popisfoto">Finální nástřik pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-22.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-22.jpg" />
-                </a>
-                <div class="popisfoto">Finální nástřik pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-23.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-23.jpg" />
-                </a>
-                <div class="popisfoto">Finální nástřik pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-24.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-24.jpg" />
-                </a>
-                <div class="popisfoto">Nastříkaný pult s přepínači a tlačítky.</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-25.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-25.jpg" />
-                </a>
-                <div class="popisfoto">Druhá strana pultu</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-26.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-26.jpg" />
-                </a>
-                <div class="popisfoto">Zapojení pultu na kolejiště</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-27.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-27.jpg" />
-                </a>
-                <div class="popisfoto">Pult instalovaný na kolejiště</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-28.jpg">
-                    <img src="Obrazky\galerie_cestovni-kolejiste1\cestovni_kolejiste1-28.jpg" />
-                </a>
-                <div class="popisfoto">Pult instalovaný na kolejiště</div>
-            </div>
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-        <h3 class="galerie_nadpis">Renovace a zprovozění pětisvětelného návěstidla</h3>
-
-        <div class="gallery-container">
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-1.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-1.jpg" />
-                </a>
-                <div class="popisfoto">Přeprava návěstidla z Bohušova do klubovny v Karviné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-2.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-2.jpg" />
-                </a>
-                <div class="popisfoto">Přeprava návěstidla z Bohušova do klubovny v Karviné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-3.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-3.jpg" />
-                </a>
-                <div class="popisfoto">Přeprava návěstidla z Bohušova do klubovny v Karviné</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.jpg" />
-                </a>
-                <div class="popisfoto">Rozebrání a očištění částí návěstidla</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-5.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-5.jpg" />
-                </a>
-                <div class="popisfoto">Převoz návěstidla na myčku</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-6.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-6.jpg" />
-                </a>
-                <div class="popisfoto">Převoz návěstidla na myčku</div>
-            </div>
-
-            <div class="galerie">
-                <a target="_blank" href="Obrazky/galerie_petisvetlo1/petisvetlo_1-7.jpg">
-                    <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-7.jpg" />
-                </a>
-                <div class="popisfoto">Umývání návěstidla po zaplavení při povodni</div>
-            </div>
-
-
-        </div>
-
-
-
-
-
-
-
-    </div>
+  </div>
+</footer>
+
+<script src="script/scriptc.js?v=3" defer></script>
+</body>
+</html>
