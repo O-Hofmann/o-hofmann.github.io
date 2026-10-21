@@ -2,21 +2,27 @@ NOVÝ VZHLED WEBU – co nahrát na hosting
 =======================================
 Nahraj obsah této složky na hosting a přepiš stávající soubory stejného názvu.
 Složku "Obrazky" na hostingu NEMAZAT ani nepřepisovat – nové stránky používají
-stejné obrázky a stejné cesty jako dosud.
+stejné obrázky a stejné cesty jako dosud. Před přepsáním si stáhni zálohu webu.
 
 Nové / změněné soubory:
   *.html (index, historie, Nase_cinnost, Aktuality, kontakty, partneri,
           fotogalerie a šest gal_*.html)
   style/style.css      – nový společný styl (rozdělený do očíslovaných částí)
-  script/scriptc.js    – menu, složky v galeriích, prohlížeč fotek
+  script/scriptc.js    – menu, složky v galeriích, prohlížeč fotek, aktuality
   favicon.ico, favicon-96x96.png
+
+NEnahrávej: NAVOD.txt a SABLONA_aktualita.txt (jsou jen pro tebe).
 
 Nepoužívané staré soubory (na hostingu je můžeš smazat, pokud je nepotřebuješ):
   test.html, kontakty_old.html, style/style_stary (1).css
 
-Poznámka: fotogalerie.html je teď přehled šesti galerií (dříve všech 256 fotek
-na jedné stránce).
-
-Barvy se mění na začátku style/style.css v části "1 Proměnné".
-Po změně CSS nebo JS zvyš číslo ?v=3 v odkazech v HTML, aby si prohlížeče
-stáhly novou verzi.
+Poznámky:
+- fotogalerie.html je teď přehled šesti galerií (dříve všech 256 fotek na jedné
+  stránce).
+- Aktuality: nejnovější 3 jsou vidět celé, starší se samy sbalí. Odkaz na nejnovější
+  aktualitu na úvodní stránce se bere ze stránky Aktuality, takže po přidání nové
+  aktuality není potřeba měnit úvod. Novou aktualitu přidáš podle
+  SABLONA_aktualita.txt.
+- Barvy se mění na začátku style/style.css v části "1 Proměnné".
+- Po změně CSS nebo JS zvyš číslo ?v=4 v odkazech v HTML, aby si prohlížeče stáhly
+  novou verzi. Po nahrání stiskni v prohlížeči Ctrl+F5.

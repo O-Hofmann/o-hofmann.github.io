@@ -285,6 +285,31 @@ html.lb-open { overflow: hidden; }
 .post .photos { margin: 20px 0 4px; }
 
 
+/* sbalené starší aktuality (skládá skript) */
+.post-toggle {
+  display: flex; width: 100%; justify-content: space-between; align-items: baseline; gap: 16px;
+  background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.post-toggle::after { content: "\25BE"; font-size: .8em; color: var(--green-700); transition: transform .2s; }
+.post-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+.post.is-collapsed { padding-top: 20px; padding-bottom: 20px; }
+.post.is-collapsed .post-date { margin: 4px 0 0; }
+.post-body > :first-child { margin-top: 0; }
+.post-body { margin-top: 14px; }
+.post .photos:not(.photos--posters) { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+
+/* odkaz na nejnovější aktualitu na úvodní stránce */
+.news-strip {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px;
+  background: #fff; border-left: 6px solid var(--lamp); border-radius: var(--radius);
+  padding: 14px 20px; text-decoration: none; color: var(--ink); box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.news-strip:hover { box-shadow: 0 6px 18px rgba(18, 53, 36, .18); color: var(--ink); }
+.news-label { font-family: var(--font-head); font-weight: 700; font-size: 1.25rem; color: var(--green-900); }
+.news-title { font-weight: 600; color: var(--green-700); text-decoration: underline; }
+.news-date { color: var(--ink-soft); font-size: .92rem; }
+
+
 /* 14  Kontakty ------------------------------------------------------------- */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: start; }
 .contact-grid h2, .contact-grid h3 { margin-top: 0; }

@@ -3,6 +3,7 @@
    1  Menu (mobilní tlačítko, rozbalovací fotogalerie)
    2  Složky v galeriích (alba se otevírají po kliknutí)
    3  Prohlížeč fotografií (šipky, klávesnice, přejetí prstem)
+   4  Aktuality (nejnovější 3 naplno, starší sbalené) a odkaz na úvodní stránce
    ========================================================================== */
 (function () {
   'use strict';
@@ -216,4 +217,64 @@
       btns[(i + (e.shiftKey ? -1 : 1) + btns.length) % btns.length].focus();
     }
   });
+
+
+  /* 4  Aktuality ------------------------------------------------------------ */
+  var FULL_POSTS = 3;   /* kolik nejnovějších příspěvků zůstane rozbalených */
+
+  function collapsePost(post, n) {
+    var title = post.querySelector('.post-title');
+    var date = post.querySelector('.post-date');
+    var label;
+    if (title) {
+      label = title.textContent.trim();
+    } else {                                   /* příspěvek bez nadpisu */
+      label = 'Aktualita z ' + (date ? date.textContent.replace(/^Publikov\S*\s*/, '') : '');
+      title = document.createElement('h2');
+      title.className = 'post-title';
+      post.insertBefore(title, post.firstChild);
+    }
+    var body = document.createElement('div');
+    body.className = 'post-body';
+    body.id = 'post-body-' + n;
+    body.hidden = true;
+    Array.prototype.slice.call(post.children).forEach(function (el) {
+      if (el !== title && el !== date) body.appendChild(el);
+    });
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'post-toggle';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', body.id);
+    btn.textContent = label;
+    title.textContent = '';
+    title.appendChild(btn);
+    post.appendChild(body);
+    post.classList.add('is-collapsed');
+    btn.addEventListener('click', function () {
+      var open = body.hidden;
+      body.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      post.classList.toggle('is-collapsed', !open);
+    });
+  }
+
+  var posts = document.querySelectorAll('.posts > .post');
+  Array.prototype.forEach.call(posts, function (post, i) {
+    if (i >= FULL_POSTS) collapsePost(post, i);
+  });
+
+  /* úvodní stránka: odkaz na nejnovější aktualitu se vždy načte ze stránky Aktuality */
+  var strip = document.getElementById('news-strip');
+  if (strip && window.fetch && window.DOMParser) {
+    fetch('Aktuality.html').then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
+      if (!t) return;
+      var first = new DOMParser().parseFromString(t, 'text/html').querySelector('.post');
+      if (!first) return;
+      var title = first.querySelector('.post-title');
+      var date = first.querySelector('.post-date');
+      if (title) strip.querySelector('.news-title').textContent = title.textContent.trim();
+      if (date) strip.querySelector('.news-date').textContent = date.textContent.trim();
+    }).catch(function () { /* zůstane text vytvořený při sestavení stránky */ });
+  }
 })();

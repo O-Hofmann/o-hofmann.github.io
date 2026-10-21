@@ -1,0 +1,32 @@
+ŠABLONA NOVÉ AKTUALITY (tento soubor NEnahrávej na hosting)
+==========================================================
+1. Otevři Aktuality.html v textovém editoru.
+2. Najdi řádek:   <div class="posts">
+3. Hned pod něj vlož blok níže a přepiš texty. Nic dalšího se upravovat nemusí:
+   - nejnovější 3 aktuality se zobrazí naplno, starší se samy sbalí
+   - odkaz na úvodní stránce se sám změní na novou aktualitu
+4. Fotky nahraj do složky Obrazky/Aktuality/<název>/ a cesty napiš stejně jako níže.
+   Části označené (nepovinné) můžeš smazat.
+
+------------------------------ ZAČÁTEK BLOKU ------------------------------
+<article class="post">
+<h2 class="post-title">Nadpis aktuality</h2>
+<p class="post-date">Publikováno 21. 10. 2026</p>
+
+<p>První odstavec textu.</p>
+
+<h3>Mezititulek (nepovinný)</h3>
+<p>Další odstavec s <a href="https://example.cz" target="_blank" rel="noopener">odkazem</a>.</p>
+
+<!-- Fotky s popiskem (nepovinné) – kolik chceš figure, tolik fotek -->
+<div class="photos" data-lightbox>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-1.webp"><img src="Obrazky/Aktuality/nazev/foto-1.webp" alt="Popisek fotky" loading="lazy" decoding="async"></a><figcaption>Popisek fotky</figcaption></figure>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-2.webp"><img src="Obrazky/Aktuality/nazev/foto-2.webp" alt="Popisek druhé fotky" loading="lazy" decoding="async"></a><figcaption>Popisek druhé fotky</figcaption></figure>
+</div>
+
+<!-- Plakát (nepovinný) – bez popisku, zobrazí se celý -->
+<div class="photos photos--posters" data-lightbox>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/plakat.webp"><img src="Obrazky/Aktuality/nazev/plakat.webp" alt="Plakát: Nadpis aktuality" loading="lazy" decoding="async"></a></figure>
+</div>
+</article>
+------------------------------- KONEC BLOKU -------------------------------
