@@ -1,14 +1,30 @@
-ŠABLONA NOVÉ AKTUALITY (tento soubor NEnahrávej na hosting)
-==========================================================
-1. Otevři Aktuality.html v textovém editoru.
-2. Najdi řádek:   <div class="posts">
-3. Hned pod něj vlož blok níže a přepiš texty. Nic dalšího se upravovat nemusí:
-   - nejnovější 3 aktuality se zobrazí naplno, starší se samy sbalí
-   - odkaz na úvodní stránce se sám změní na novou aktualitu
-4. Fotky nahraj do složky Obrazky/Aktuality/<název>/ a cesty napiš stejně jako níže.
-   Části označené (nepovinné) můžeš smazat.
+JAK PŘIDAT NOVOU AKTUALITU (tento soubor NEnahrávej na hosting)
+================================================================
+Nejjednodušší postup (stejný jako dosud):
 
------------------------------- ZAČÁTEK BLOKU ------------------------------
+1. Otevři Aktuality.html v textovém editoru (třeba Poznámkový blok, Notepad++).
+2. Najdi nejnovější aktualitu – celý blok od <article class="post"> po </article>.
+3. Zkopíruj ho a vlož NAD něj (nová aktualita musí být první).
+4. V nové kopii změň:
+   - nadpis            <h2 class="post-title">…</h2>
+   - datum             <p class="post-date">Publikováno …</p>
+   - odstavce textu    <p>…</p>
+   - u každé fotky     cestu v href="…" a v src="…" (obě stejně) a popisek
+                       pod fotkou <figcaption>…</figcaption>
+   (alt="…" měnit nemusíš, doplní se sám z popisku)
+5. Nepotřebné odstavce, fotky nebo celou část s fotkami smaž.
+6. Fotky nahraj na FTP do Obrazky/Aktuality/<název>/ a Aktuality.html přepiš.
+
+Víc nedělej. Nejnovější 3 aktuality se ukážou celé, starší se samy sbalí a
+odkaz na úvodní stránce se sám změní na novou aktualitu.
+
+Pozor:
+- Nová aktualita musí být uvnitř <div class="posts"> a jako první.
+- Bloky nemaž napůl: každý <article class="post"> musí mít i </article>.
+
+------------------------------------------------------------------
+Kdyby ses chtěl(a) vzít čistou kostru místo kopírování, tady je:
+
 <article class="post">
 <h2 class="post-title">Nadpis aktuality</h2>
 <p class="post-date">Publikováno 21. 10. 2026</p>
@@ -20,13 +36,12 @@
 
 <!-- Fotky s popiskem (nepovinné) – kolik chceš figure, tolik fotek -->
 <div class="photos" data-lightbox>
-<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-1.webp"><img src="Obrazky/Aktuality/nazev/foto-1.webp" alt="Popisek fotky" loading="lazy" decoding="async"></a><figcaption>Popisek fotky</figcaption></figure>
-<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-2.webp"><img src="Obrazky/Aktuality/nazev/foto-2.webp" alt="Popisek druhé fotky" loading="lazy" decoding="async"></a><figcaption>Popisek druhé fotky</figcaption></figure>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-1.webp"><img src="Obrazky/Aktuality/nazev/foto-1.webp" alt="" loading="lazy" decoding="async"></a><figcaption>Popisek fotky</figcaption></figure>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/foto-2.webp"><img src="Obrazky/Aktuality/nazev/foto-2.webp" alt="" loading="lazy" decoding="async"></a><figcaption>Popisek druhé fotky</figcaption></figure>
 </div>
 
 <!-- Plakát (nepovinný) – bez popisku, zobrazí se celý -->
 <div class="photos photos--posters" data-lightbox>
-<figure class="photo"><a href="Obrazky/Aktuality/nazev/plakat.webp"><img src="Obrazky/Aktuality/nazev/plakat.webp" alt="Plakát: Nadpis aktuality" loading="lazy" decoding="async"></a></figure>
+<figure class="photo"><a href="Obrazky/Aktuality/nazev/plakat.webp"><img src="Obrazky/Aktuality/nazev/plakat.webp" alt="Plakát" loading="lazy" decoding="async"></a></figure>
 </div>
 </article>
-------------------------------- KONEC BLOKU -------------------------------

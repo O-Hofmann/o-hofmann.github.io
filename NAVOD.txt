@@ -24,5 +24,5 @@ Poznámky:
   aktuality není potřeba měnit úvod. Novou aktualitu přidáš podle
   SABLONA_aktualita.txt.
 - Barvy se mění na začátku style/style.css v části "1 Proměnné".
-- Po změně CSS nebo JS zvyš číslo ?v=4 v odkazech v HTML, aby si prohlížeče stáhly
+- Po změně CSS nebo JS zvyš číslo ?v=5 v odkazech v HTML, aby si prohlížeče stáhly
   novou verzi. Po nahrání stiskni v prohlížeči Ctrl+F5.
