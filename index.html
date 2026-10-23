@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/style.css?v=12">
+<link rel="stylesheet" href="style/style.css?v=13">
 <script>try{var t=localStorage.getItem("kmk-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
@@ -37,33 +37,32 @@
 </header>
 
 <main id="obsah">
-<section class="strip-section">
-  <div class="wrap">
-    <ul class="photo-strip" aria-label="Fotogalerie">
-      <li><a href="gal_dulni-zeleznice.html"><img src="Obrazky/galerie_DD2025/DD_2025-31.webp" alt="" loading="lazy"><span>Důlní železnice</span></a></li>
-      <li><a href="gal_klubovna.html"><img src="Obrazky/galerie_kolejiste2025/kolejiste_2025-29.webp" alt="" loading="lazy"><span>Klubovna v Karviné</span></a></li>
-      <li><a href="gal_vystavy-a-akce.html"><img src="Obrazky/galerie_hrad2025/hrad_2025-2.webp" alt="" loading="lazy"><span>Výstavy a akce</span></a></li>
-      <li><a href="gal_projekty.html"><img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.webp" alt="" loading="lazy"><span>Projekty</span></a></li>
-    </ul>
+<section class="hero hero--collage">
+  <div class="collage" aria-hidden="true">
+      <img src="Obrazky/galerie_DD2025/DD_2025-31.webp" alt="" decoding="async" fetchpriority="high">
+      <img src="Obrazky/galerie_kolejiste2025/kolejiste_2025-29.webp" alt="" decoding="async">
+      <img src="Obrazky/galerie_hrad2025/hrad_2025-2.webp" alt="" decoding="async">
+      <img src="Obrazky/galerie_petisvetlo1/petisvetlo_1-4.webp" alt="" decoding="async">
+      <img src="Obrazky/galerie_pult_742-1/pult_742-1.webp" alt="" decoding="async">
+      <img src="Obrazky/galerie_osoblazeni2025/osoblazeni_2025-6.webp" alt="" decoding="async">
+  </div>
+  <div class="wrap hero-text">
+    <h1>Vítej na našich webových stránkách!</h1>
+    <p class="lead">Jsme Klub malých kolejí, skupina mladých nadšenců, která se schází v klubovně na hlavním nádraží v Karviné. Věnujeme se modelové železnici nejen ve velikosti H0, společně budujeme klubové kolejiště – od pokládky kolejí, přes elektrické zapojení až po detailní modelování krajiny.</p>
+    <div class="btns">
+      <a class="btn btn--lamp" href="Nase_cinnost.html">Co děláme</a>
+      <a class="btn btn--ghost" href="fotogalerie.html">Prohlédnout fotogalerii</a>
+    </div>
   </div>
 </section>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Vítej na našich webových stránkách!</h1>
-      <p class="lead">Jsme Klub malých kolejí, skupina mladých nadšenců, která se schází v klubovně na hlavním nádraží v Karviné. Věnujeme se modelové železnici nejen ve velikosti H0, společně budujeme klubové kolejiště – od pokládky kolejí, přes elektrické zapojení až po detailní modelování krajiny.</p>
-      <div class="btns">
-        <a class="btn btn--primary" href="Nase_cinnost.html">Co děláme</a>
-        <a class="btn" href="fotogalerie.html">Prohlédnout fotogalerii</a>
-      </div>
-    </div>
-    <figure class="hero-photo">
+<section class="section section--tight">
+  <div class="wrap">
+    <figure class="hero-photo hero-photo--wide">
       <a href="Obrazky/uvod1.jpg" target="_blank" rel="noopener"><img src="Obrazky/uvod1.jpg" alt="Klubová exkurze na lesní železnici v Rajnochovicích"></a>
       <figcaption>Klubová exkurze na lesní železnici v Rajnochovicích</figcaption>
     </figure>
   </div>
-  <div class="wrap"><div class="track" aria-hidden="true"></div></div>
 </section>
 
 <section class="section section--tight">
@@ -111,6 +110,6 @@
   </div>
 </footer>
 
-<script src="script/scriptc.js?v=12" defer></script>
+<script src="script/scriptc.js?v=13" defer></script>
 </body>
 </html>
