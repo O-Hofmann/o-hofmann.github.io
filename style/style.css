@@ -475,6 +475,16 @@ html.lb-open { overflow: hidden; }
 .btn--ghost:hover { background: rgba(255, 255, 255, .16); color: #fff; }
 .hero-photo--wide { max-width: 46em; margin-inline: auto; }
 
+/* na počítači se jednotlivé dlaždice po jedné pomalu přefotí na další fotku (skript, bez něj stojí) */
+.collage-live { display: none; }
+@media (min-width: 761px) {
+  .collage.is-live > img { display: none; }
+  .collage.is-live .collage-live { display: flex; position: absolute; inset: 0; width: 100%; }
+  .collage-tile { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; }
+  .collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
+  .collage-tile img.on { opacity: 1; }
+}
+
 /* na telefonu: nahoře celé fotky v poměru 4 : 3, které se pomalu prolínají, text je pod nimi */
 @media (max-width: 760px) {
   .collage { position: relative; inset: auto; display: block; aspect-ratio: 4 / 3; z-index: 0; }

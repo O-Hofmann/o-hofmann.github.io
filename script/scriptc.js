@@ -5,6 +5,7 @@
    3  Prohlížeč fotografií (šipky, klávesnice, přejetí prstem)
    4  Aktuality (nejnovější 3 naplno, starší sbalené) a odkaz na úvodní stránce
    5  Přepínač tmavého a světlého režimu
+   6  Kolážová fotka na úvodu: dlaždice se po jedné pomalu vymění za další fotku (počítač)
    ========================================================================== */
 (function () {
   'use strict';
@@ -310,5 +311,44 @@
       try { localStorage.setItem('kmk-theme', next); } catch (e) {}
       paint();
     });
+  }
+
+  /* 6  Kolážová fotka na úvodu (počítač) ----------------------------------- */
+  var collage = document.querySelector('.collage');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (collage && !reduce) {
+    var srcs = Array.prototype.map.call(collage.querySelectorAll(':scope > img'), function (i) { return i.getAttribute('src'); });
+    var SLOTS = 4, INTERVAL = 4500;
+    if (srcs.length > SLOTS) {
+      var live = document.createElement('div');
+      live.className = 'collage-live';
+      var tiles = [], shown = [], hidden = srcs.slice(SLOTS), step = 0, timer = null;
+      for (var t = 0; t < SLOTS; t++) {
+        var tile = document.createElement('div'); tile.className = 'collage-tile';
+        var im = document.createElement('img'); im.alt = ''; im.src = srcs[t]; im.className = 'on';
+        tile.appendChild(im); live.appendChild(tile); tiles.push(tile); shown.push(srcs[t]);
+      }
+      collage.appendChild(live);
+      collage.classList.add('is-live');
+      srcs.forEach(function (u) { var p = new Image(); p.src = u; });   /* přednačtení, aby přechod neblikal */
+
+      var tick = function () {
+        var k = step % SLOTS, next = hidden.shift(), tileEl = tiles[k];
+        var front = tileEl.querySelector('img.on');
+        var back = document.createElement('img'); back.alt = ''; back.src = next;
+        tileEl.appendChild(back);
+        void back.offsetWidth;
+        back.className = 'on'; front.className = '';
+        setTimeout(function () { if (front.parentNode) front.parentNode.removeChild(front); }, 1800);
+        hidden.push(shown[k]); shown[k] = next; step++;
+      };
+      var start = function () {
+        if (!timer && window.innerWidth > 760 && !document.hidden) timer = setInterval(tick, INTERVAL);
+      };
+      var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+      document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+      window.addEventListener('resize', function () { window.innerWidth > 760 ? start() : stop(); });
+      start();
+    }
   }
 })();
