@@ -209,6 +209,18 @@ p { margin: 0 0 1.1em; }
 .panel h2:first-child, .panel h3:first-child { margin-top: 0; }
 .stack > * + * { margin-top: 28px; }
 
+/* Naše činnost: odstavec a jeho fotky vedle sebe (na úzkém displeji pod sebou) */
+.split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.split .photos { grid-template-columns: repeat(2, 1fr); }
+.split .photo:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+.split .photo:first-child:nth-last-child(odd) img { aspect-ratio: 16 / 9; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; }
+  .split--reverse { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .split--reverse .panel { order: 2; }
+  .split .panel { position: sticky; top: 92px; }
+}
+
 
 /* 9  Historie (osa času) --------------------------------------------------- */
 .timeline { list-style: none; margin: 0; padding: 0 0 0 56px; position: relative; max-width: 52em; }
