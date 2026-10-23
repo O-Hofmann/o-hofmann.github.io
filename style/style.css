@@ -388,7 +388,7 @@ html.lb-open { overflow: hidden; }
   .contact-photos { grid-template-columns: 1fr 1fr; align-items: stretch; }
   .photo--map { height: 100%; }
   .photo--map a { flex: 1; aspect-ratio: auto; position: relative; min-height: 220px; }
-  .photo--map img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .contact-photos .photo--map img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
 }
 .ig { width: 16px; height: 16px; display: inline-block; vertical-align: -2px; margin-left: 6px; }
 
@@ -474,6 +474,7 @@ html.lb-open { overflow: hidden; }
 .btn--ghost { border-color: rgba(255, 255, 255, .75); color: #fff; }
 .btn--ghost:hover { background: rgba(255, 255, 255, .16); color: #fff; }
 .hero-photo--wide { max-width: 46em; margin-inline: auto; }
+.hero-photo--wide img { aspect-ratio: auto; height: auto; object-fit: contain; }   /* celá fotka bez ořezu */
 
 /* na počítači se jednotlivé dlaždice po jedné pomalu přefotí na další fotku (skript, bez něj stojí) */
 .collage-live { display: none; }
