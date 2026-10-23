@@ -219,6 +219,14 @@
   });
 
 
+  /* Popisek fotky se píše jen pod fotku, alt a název odkazu si skript vezme z něj.
+     Při kopírování starých příspěvků tak nezůstane starý, nesprávný alt. */
+  Array.prototype.forEach.call(document.querySelectorAll('.photo'), function (fig) {
+    var cap = fig.querySelector('figcaption');
+    var img = fig.querySelector('img');
+    if (cap && img && cap.textContent.trim()) img.alt = cap.textContent.trim();
+  });
+
   /* 4  Aktuality ------------------------------------------------------------ */
   var FULL_POSTS = 3;   /* kolik nejnovějších příspěvků zůstane rozbalených */
 
