@@ -322,7 +322,7 @@
     if (srcs.length > SLOTS) {
       var live = document.createElement('div');
       live.className = 'collage-live';
-      var tiles = [], step = 0, timer = null;
+      var tiles = [], ptr = null, timer = null;
       for (var t = 0; t < SLOTS; t++) {
         var tile = document.createElement('div'); tile.className = 'collage-tile';
         var im = document.createElement('img'); im.alt = ''; im.src = srcs[t]; im.className = 'on';
@@ -334,15 +334,17 @@
 
       /* celý pás najednou: další sada fotek podle pořadí, po posledním se začíná znovu */
       var tick = function () {
-        step++;
+        var shown = tiles.filter(function (el) { return el.offsetParent !== null; }).length || 1;   /* kolik jich je při této šířce vidět */
+        if (ptr === null) ptr = shown % srcs.length;
         tiles.forEach(function (tileEl, k) {
           var front = tileEl.querySelector('img.on');
-          var back = document.createElement('img'); back.alt = ''; back.src = srcs[(step * SLOTS + k) % srcs.length];
+          var back = document.createElement('img'); back.alt = ''; back.src = srcs[(ptr + k) % srcs.length];
           tileEl.appendChild(back);
           void back.offsetWidth;
           back.className = 'on'; front.className = '';
           setTimeout(function () { if (front.parentNode) front.parentNode.removeChild(front); }, 1900);
         });
+        ptr = (ptr + shown) % srcs.length;
       };
       var start = function () { if (!timer && !document.hidden) timer = setInterval(tick, INTERVAL); };
       var stop = function () { if (timer) { clearInterval(timer); timer = null; } };

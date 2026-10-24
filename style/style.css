@@ -481,6 +481,14 @@ html.lb-open { overflow: hidden; }
 .collage.is-live .collage-live { display: flex; }
 .collage.is-live > img { display: none; }
 .collage-tile { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; }
+/* jemný přechod mezi sousedními fotkami: každá další se zleva plynule prolíná přes předchozí */
+.collage-tile + .collage-tile {
+  margin-left: -56px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 56px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 56px);
+}
+/* čím užší okno, tím méně fotek vedle sebe */
+@media (max-width: 1099px) { .collage > img:nth-child(n + 4), .collage-tile:nth-child(n + 4) { display: none; } }
 .collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
 .collage-tile img.on { opacity: 1; }
 
@@ -488,6 +496,7 @@ html.lb-open { overflow: hidden; }
 @media (max-width: 760px) {
   .collage { position: relative; inset: auto; height: 150px; z-index: 0; }
   .collage > img:nth-child(n + 3), .collage-tile:nth-child(n + 3) { display: none; }
+  .collage-tile + .collage-tile { margin-left: -36px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px); mask-image: linear-gradient(90deg, transparent 0, #000 36px); }
   .hero--collage::before { display: none; }
   .hero-text { padding-top: 24px; padding-bottom: 32px; }
 }
