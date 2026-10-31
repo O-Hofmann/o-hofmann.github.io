@@ -459,55 +459,35 @@ html.lb-open { overflow: hidden; }
   * { transition: none !important; }
 }
 
-/* kolážová fotka přes celou šířku na úvodní stránce: nižší pás, na počítači 4 fotky, aby se vešly co nejvíc */
-.hero--collage { position: relative; padding: 0; background: #0c1a12; color: #fff; overflow: hidden; isolation: isolate; }
-.collage { position: absolute; inset: 0; display: flex; z-index: -2; }
-.collage img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; display: block; }
-.collage img:nth-child(n + 5) { display: none; }     /* 5. a 6. fotka jen v prolínání na telefonu */
-.hero--collage::before {          /* tmavý závoj, aby byl text čitelný na jakékoli fotce */
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, rgba(10, 26, 17, .86) 0%, rgba(10, 26, 17, .62) 55%, rgba(10, 26, 17, .3) 100%);
+/* kolážová fotka přes celou šířku na úvodní stránce: pás fotek, pod ním text.
+   Pás má poměr stran daný počtem fotek (každá 4 : 3), aby se fotky neořezávaly. */
+.hero--collage { position: relative; padding: 0; background: linear-gradient(180deg, var(--green-100), var(--paper)); overflow: hidden; }
+.collage { position: relative; display: flex; gap: 3px; background: var(--green-900); aspect-ratio: 16 / 3; max-height: 420px; }
+.collage > img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; display: block; }
+.collage > img:nth-child(n + 5) { display: none; }   /* 5. a další fotky jen ve skriptu (prolínání) */
+.collage::after {                                      /* lehké ztmavení fotek */
+  content: ""; position: absolute; inset: 0; background: rgba(10, 26, 17, .22); pointer-events: none;
 }
-.hero-text { padding-top: 40px; padding-bottom: 40px; }
-.hero--collage h1 { color: #fff; font-size: clamp(2rem, 4vw, 3.1rem); max-width: 18em; margin-bottom: 14px; text-shadow: 0 2px 14px rgba(0, 0, 0, .35); }
-.hero--collage .lead { color: #eaf3ed; max-width: 44em; font-size: 1.08rem; margin-bottom: 22px; }
-.btn--ghost { border-color: rgba(255, 255, 255, .75); color: #fff; }
-.btn--ghost:hover { background: rgba(255, 255, 255, .16); color: #fff; }
-.hero-photo--wide { max-width: 46em; margin-inline: auto; }
-.hero-photo--wide img { aspect-ratio: auto; height: auto; object-fit: contain; }   /* celá fotka bez ořezu */
+.hero-text { padding-top: 36px; padding-bottom: 44px; }
+.hero--collage h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 18em; margin-bottom: 16px; }
+.hero--collage .lead { max-width: 40em; margin-bottom: 24px; }
 
 /* celý pás se po několika sekundách plynule vymění za další sadu fotek (skript, bez něj stojí) */
-.collage-live { position: absolute; inset: 0; width: 100%; display: none; }
+.collage-live { position: absolute; inset: 0; width: 100%; display: none; gap: 3px; }
 .collage.is-live .collage-live { display: flex; }
 .collage.is-live > img { display: none; }
 .collage-tile { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; }
-/* jemný přechod mezi sousedními fotkami: každá další se zleva plynule prolíná přes předchozí */
-.collage-tile + .collage-tile {
-  margin-left: -56px;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 56px);
-          mask-image: linear-gradient(90deg, transparent 0, #000 56px);
-}
-/* čím užší okno, tím méně fotek vedle sebe */
-@media (max-width: 1099px) { .collage > img:nth-child(n + 4), .collage-tile:nth-child(n + 4) { display: none; } }
 .collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
 .collage-tile img.on { opacity: 1; }
 
-/* na telefonu: nízký pás se dvěma fotkami nahoře, text je pod ním */
+/* čím užší okno, tím méně fotek vedle sebe (3 na tabletu, 2 na telefonu) */
+@media (max-width: 1099px) {
+  .collage { aspect-ratio: 4 / 1; }
+  .collage > img:nth-child(n + 4), .collage-tile:nth-child(n + 4) { display: none; }
+}
 @media (max-width: 760px) {
-  .collage { position: relative; inset: auto; height: 150px; z-index: 0; }
+  .collage { aspect-ratio: 8 / 3; }
   .collage > img:nth-child(n + 3), .collage-tile:nth-child(n + 3) { display: none; }
-  .collage-tile + .collage-tile { margin-left: -36px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px); mask-image: linear-gradient(90deg, transparent 0, #000 36px); }
-  .hero--collage::before { display: none; }
   .hero-text { padding-top: 24px; padding-bottom: 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .collage-tile img { transition: none; } }
-
-/* varianta: pás fotek bez textu přes, text je celý pod ním */
-.collage { position: relative; inset: auto; height: clamp(180px, 24vw, 340px); z-index: 0; }
-.hero--collage::before { display: none; }
-.hero-text { padding-top: 32px; padding-bottom: 40px; }
-@media (max-width: 760px) { .collage { height: 150px; } }
-.hero--collage { background: var(--green-900); }            /* stejná zelená jako hlavička */
-.collage::after {                                            /* lehké ztmavení fotek */
-  content: ""; position: absolute; inset: 0; background: rgba(10, 26, 17, .3); pointer-events: none;
-}
