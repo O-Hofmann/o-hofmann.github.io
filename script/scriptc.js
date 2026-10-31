@@ -4,8 +4,6 @@
    2  Složky v galeriích (alba se otevírají po kliknutí)
    3  Prohlížeč fotografií (šipky, klávesnice, přejetí prstem)
    4  Aktuality (nejnovější 3 naplno, starší sbalené) a odkaz na úvodní stránce
-   5  Přepínač tmavého a světlého režimu
-   6  Kolážová fotka na úvodu: dlaždice se po jedné pomalu vymění za další fotku 
    ========================================================================== */
 (function () {
   'use strict';
@@ -286,73 +284,5 @@
       if (title) strip.querySelector('.news-title').textContent = title.textContent.trim();
       if (date) strip.querySelector('.news-date').textContent = date.textContent.trim();
     }).catch(function () { /* zůstane text vytvořený při sestavení stránky */ });
-  }
-
-  /* 5  Přepínač tmavého a světlého režimu --------------------------------- */
-  var themeBtn = document.getElementById('theme-btn');
-  if (themeBtn) {
-    var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
-    var MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
-    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-    var current = function () {
-      var t = document.documentElement.getAttribute('data-theme');
-      return t || (mq && mq.matches ? 'dark' : 'light');
-    };
-    var paint = function () {
-      var dark = current() === 'dark';
-      themeBtn.innerHTML = dark ? SUN : MOON;      /* ikona ukazuje, na co se přepne */
-      themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-    };
-    themeBtn.hidden = false;
-    paint();
-    themeBtn.addEventListener('click', function () {
-      var next = current() === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('kmk-theme', next); } catch (e) {}
-      paint();
-    });
-  }
-
-  /* 6  Kolážová fotka na úvodu ---------------------------------------------- */
-  var collage = document.querySelector('.collage');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (collage && !reduce) {
-    var srcs = Array.prototype.map.call(collage.querySelectorAll(':scope > img'), function (i) { return i.getAttribute('src'); });
-    var SLOTS = 4, INTERVAL = 6000;
-    if (srcs.length > SLOTS) {
-      var live = document.createElement('div');
-      live.className = 'collage-live';
-      var tiles = [], ptr = Math.floor(Math.random() * srcs.length), timer = null;   /* začne na náhodném místě, návštěvník pokaždé uvidí jiné fotky */
-      for (var t = 0; t < SLOTS; t++) {
-        var tile = document.createElement('div'); tile.className = 'collage-tile';
-        var im = document.createElement('img'); im.alt = ''; im.src = srcs[t]; im.className = 'on';
-        tile.appendChild(im); live.appendChild(tile); tiles.push(tile);
-      }
-      collage.appendChild(live);
-      collage.classList.add('is-live');
-      /* přednačtí se jen další sada, ne všechny fotky najednou */
-      var preload = function () { for (var q = 0; q < SLOTS; q++) { var pi = new Image(); pi.src = srcs[(ptr + q) % srcs.length]; } };
-
-      /* celý pás najednou: další sada fotek podle pořadí, po posledním se začíná znovu */
-      var tick = function () {
-        var shown = tiles.filter(function (el) { return el.offsetParent !== null; }).length || 1;   /* kolik jich je při této šířce vidět */
-        tiles.forEach(function (tileEl, k) {
-          if (tileEl.offsetParent === null) return;      /* skrytá dlaždice se nenačítá */
-          var front = tileEl.querySelector('img.on');
-          var back = document.createElement('img'); back.alt = ''; back.src = srcs[(ptr + k) % srcs.length];
-          tileEl.appendChild(back);
-          void back.offsetWidth;
-          back.className = 'on'; front.className = '';
-          setTimeout(function () { if (front.parentNode) front.parentNode.removeChild(front); }, 1900);
-        });
-        ptr = (ptr + shown) % srcs.length;
-        preload();
-      };
-      preload();
-      var start = function () { if (!timer && !document.hidden) timer = setInterval(tick, INTERVAL); };
-      var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
-      document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
-      start();
-    }
   }
 })();
