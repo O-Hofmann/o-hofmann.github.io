@@ -322,7 +322,7 @@
     if (srcs.length > SLOTS) {
       var live = document.createElement('div');
       live.className = 'collage-live';
-      var tiles = [], ptr = null, timer = null;
+      var tiles = [], ptr = Math.floor(Math.random() * srcs.length), timer = null;   /* začne na náhodném místě, návštěvník pokaždé uvidí jiné fotky */
       for (var t = 0; t < SLOTS; t++) {
         var tile = document.createElement('div'); tile.className = 'collage-tile';
         var im = document.createElement('img'); im.alt = ''; im.src = srcs[t]; im.className = 'on';
@@ -330,13 +330,14 @@
       }
       collage.appendChild(live);
       collage.classList.add('is-live');
-      srcs.forEach(function (u) { var p = new Image(); p.src = u; });   /* přednačtení, aby přechod neblikal */
+      /* přednačtí se jen další sada, ne všechny fotky najednou */
+      var preload = function () { for (var q = 0; q < SLOTS; q++) { var pi = new Image(); pi.src = srcs[(ptr + q) % srcs.length]; } };
 
       /* celý pás najednou: další sada fotek podle pořadí, po posledním se začíná znovu */
       var tick = function () {
         var shown = tiles.filter(function (el) { return el.offsetParent !== null; }).length || 1;   /* kolik jich je při této šířce vidět */
-        if (ptr === null) ptr = shown % srcs.length;
         tiles.forEach(function (tileEl, k) {
+          if (tileEl.offsetParent === null) return;      /* skrytá dlaždice se nenačítá */
           var front = tileEl.querySelector('img.on');
           var back = document.createElement('img'); back.alt = ''; back.src = srcs[(ptr + k) % srcs.length];
           tileEl.appendChild(back);
@@ -345,7 +346,9 @@
           setTimeout(function () { if (front.parentNode) front.parentNode.removeChild(front); }, 1900);
         });
         ptr = (ptr + shown) % srcs.length;
+        preload();
       };
+      preload();
       var start = function () { if (!timer && !document.hidden) timer = setInterval(tick, INTERVAL); };
       var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
       document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
