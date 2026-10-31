@@ -507,3 +507,7 @@ html.lb-open { overflow: hidden; }
 .hero--collage::before { display: none; }
 .hero-text { padding-top: 32px; padding-bottom: 40px; }
 @media (max-width: 760px) { .collage { height: 150px; } }
+.hero--collage { background: var(--green-900); }            /* stejná zelená jako hlavička */
+.collage::after {                                            /* lehké ztmavení fotek */
+  content: ""; position: absolute; inset: 0; background: rgba(10, 26, 17, .3); pointer-events: none;
+}
