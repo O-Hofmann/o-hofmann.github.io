@@ -5,6 +5,7 @@
    3  Prohlížeč fotografií (šipky, klávesnice, přejetí prstem)
    4  Aktuality (nejnovější 3 naplno, starší sbalené) a odkaz na úvodní stránce
    5  Přepínač tmavého a světlého režimu
+   6  Kolážová fotka na úvodu: dlaždice se po jedné pomalu vymění za další fotku 
    ========================================================================== */
 (function () {
   'use strict';
@@ -310,5 +311,48 @@
       try { localStorage.setItem('kmk-theme', next); } catch (e) {}
       paint();
     });
+  }
+
+  /* 6  Kolážová fotka na úvodu ---------------------------------------------- */
+  var collage = document.querySelector('.collage');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (collage && !reduce) {
+    var srcs = Array.prototype.map.call(collage.querySelectorAll(':scope > img'), function (i) { return i.getAttribute('src'); });
+    var SLOTS = 4, INTERVAL = 6000;
+    if (srcs.length > SLOTS) {
+      var live = document.createElement('div');
+      live.className = 'collage-live';
+      var tiles = [], ptr = Math.floor(Math.random() * srcs.length), timer = null;   /* začne na náhodném místě, návštěvník pokaždé uvidí jiné fotky */
+      for (var t = 0; t < SLOTS; t++) {
+        var tile = document.createElement('div'); tile.className = 'collage-tile';
+        var im = document.createElement('img'); im.alt = ''; im.src = srcs[t]; im.className = 'on';
+        tile.appendChild(im); live.appendChild(tile); tiles.push(tile);
+      }
+      collage.appendChild(live);
+      collage.classList.add('is-live');
+      /* přednačtí se jen další sada, ne všechny fotky najednou */
+      var preload = function () { for (var q = 0; q < SLOTS; q++) { var pi = new Image(); pi.src = srcs[(ptr + q) % srcs.length]; } };
+
+      /* celý pás najednou: další sada fotek podle pořadí, po posledním se začíná znovu */
+      var tick = function () {
+        var shown = tiles.filter(function (el) { return el.offsetParent !== null; }).length || 1;   /* kolik jich je při této šířce vidět */
+        tiles.forEach(function (tileEl, k) {
+          if (tileEl.offsetParent === null) return;      /* skrytá dlaždice se nenačítá */
+          var front = tileEl.querySelector('img.on');
+          var back = document.createElement('img'); back.alt = ''; back.src = srcs[(ptr + k) % srcs.length];
+          tileEl.appendChild(back);
+          void back.offsetWidth;
+          back.className = 'on'; front.className = '';
+          setTimeout(function () { if (front.parentNode) front.parentNode.removeChild(front); }, 1900);
+        });
+        ptr = (ptr + shown) % srcs.length;
+        preload();
+      };
+      preload();
+      var start = function () { if (!timer && !document.hidden) timer = setInterval(tick, INTERVAL); };
+      var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+      document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+      start();
+    }
   }
 })();

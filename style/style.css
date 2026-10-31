@@ -262,8 +262,8 @@ p { margin: 0 0 1.1em; }
 }
 .tl-item { position: relative; padding-bottom: 28px; }
 .tl-item:last-child { padding-bottom: 0; }
-.tl-item::before {                        /* návěstní světlo u nadpisu */
-  content: ""; position: absolute; left: -44px; top: .42em; width: 18px; height: 18px; border-radius: 50%;
+.tl-item::before {                        /* návěstní světlo u nadpisu, přesně mezi kolejnicemi */
+  content: ""; position: absolute; left: -48px; top: .42em; width: 18px; height: 18px; border-radius: 50%;
   background: var(--lamp); border: 4px solid var(--paper); box-shadow: 0 0 0 2px var(--heading);
 }
 .tl-item h2 { font-size: 1.7rem; margin: 0 0 .3em; }
@@ -382,6 +382,14 @@ html.lb-open { overflow: hidden; }
 .lead--spaced { margin-top: 36px; }
 .contact-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start; }
 .contact-photos .photo img { aspect-ratio: auto; object-fit: contain; }
+/* mapa je stejně vysoká jako blok se vstupem do klubovny (vedle sebe), pod sebou má poměr 4 : 3 */
+.photo--map a { aspect-ratio: 4 / 3; }
+@media (min-width: 700px) {
+  .contact-photos { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .photo--map { height: 100%; }
+  .photo--map a { flex: 1; aspect-ratio: auto; position: relative; min-height: 220px; }
+  .contact-photos .photo--map img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+}
 .ig { width: 16px; height: 16px; display: inline-block; vertical-align: -2px; margin-left: 6px; }
 
 
@@ -451,16 +459,55 @@ html.lb-open { overflow: hidden; }
   * { transition: none !important; }
 }
 
-/* pás fotek na úvodní stránce: jeden řádek pod hlavičkou */
-.strip-section { padding: 20px 0 0; }
-.photo-strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.photo-strip a { position: relative; display: block; border-radius: var(--radius); overflow: hidden; aspect-ratio: 2 / 1; background: var(--surface); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
-.photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
-.photo-strip a:hover img, .photo-strip a:focus-visible img { transform: scale(1.04); }
-.photo-strip span { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 12px 8px; color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; letter-spacing: .02em; background: linear-gradient(transparent, rgba(10, 28, 18, .85)); }
-/* na telefonu zůstává jeden řádek, jen se posouvá do strany */
-@media (max-width: 760px) {
-  .photo-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; padding-bottom: 6px; }
-  .photo-strip li { flex: 0 0 62%; scroll-snap-align: start; }
+/* kolážová fotka přes celou šířku na úvodní stránce: nižší pás, na počítači 4 fotky, aby se vešly co nejvíc */
+.hero--collage { position: relative; padding: 0; background: #0c1a12; color: #fff; overflow: hidden; isolation: isolate; }
+.collage { position: absolute; inset: 0; display: flex; z-index: -2; }
+.collage img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; display: block; }
+.collage img:nth-child(n + 5) { display: none; }     /* 5. a 6. fotka jen v prolínání na telefonu */
+.hero--collage::before {          /* tmavý závoj, aby byl text čitelný na jakékoli fotce */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(10, 26, 17, .86) 0%, rgba(10, 26, 17, .62) 55%, rgba(10, 26, 17, .3) 100%);
 }
-@media (prefers-reduced-motion: reduce) { .photo-strip img { transition: none; } }
+.hero-text { padding-top: 40px; padding-bottom: 40px; }
+.hero--collage h1 { color: #fff; font-size: clamp(2rem, 4vw, 3.1rem); max-width: 18em; margin-bottom: 14px; text-shadow: 0 2px 14px rgba(0, 0, 0, .35); }
+.hero--collage .lead { color: #eaf3ed; max-width: 44em; font-size: 1.08rem; margin-bottom: 22px; }
+.btn--ghost { border-color: rgba(255, 255, 255, .75); color: #fff; }
+.btn--ghost:hover { background: rgba(255, 255, 255, .16); color: #fff; }
+.hero-photo--wide { max-width: 46em; margin-inline: auto; }
+.hero-photo--wide img { aspect-ratio: auto; height: auto; object-fit: contain; }   /* celá fotka bez ořezu */
+
+/* celý pás se po několika sekundách plynule vymění za další sadu fotek (skript, bez něj stojí) */
+.collage-live { position: absolute; inset: 0; width: 100%; display: none; }
+.collage.is-live .collage-live { display: flex; }
+.collage.is-live > img { display: none; }
+.collage-tile { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; }
+/* jemný přechod mezi sousedními fotkami: každá další se zleva plynule prolíná přes předchozí */
+.collage-tile + .collage-tile {
+  margin-left: -56px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 56px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 56px);
+}
+/* čím užší okno, tím méně fotek vedle sebe */
+@media (max-width: 1099px) { .collage > img:nth-child(n + 4), .collage-tile:nth-child(n + 4) { display: none; } }
+.collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
+.collage-tile img.on { opacity: 1; }
+
+/* na telefonu: nízký pás se dvěma fotkami nahoře, text je pod ním */
+@media (max-width: 760px) {
+  .collage { position: relative; inset: auto; height: 150px; z-index: 0; }
+  .collage > img:nth-child(n + 3), .collage-tile:nth-child(n + 3) { display: none; }
+  .collage-tile + .collage-tile { margin-left: -36px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px); mask-image: linear-gradient(90deg, transparent 0, #000 36px); }
+  .hero--collage::before { display: none; }
+  .hero-text { padding-top: 24px; padding-bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .collage-tile img { transition: none; } }
+
+/* varianta: pás fotek bez textu přes, text je celý pod ním */
+.collage { position: relative; inset: auto; height: clamp(180px, 24vw, 340px); z-index: 0; }
+.hero--collage::before { display: none; }
+.hero-text { padding-top: 32px; padding-bottom: 40px; }
+@media (max-width: 760px) { .collage { height: 150px; } }
+.hero--collage { background: var(--green-900); }            /* stejná zelená jako hlavička */
+.collage::after {                                            /* lehké ztmavení fotek */
+  content: ""; position: absolute; inset: 0; background: rgba(10, 26, 17, .3); pointer-events: none;
+}
