@@ -46,7 +46,7 @@
   --gutter: 16px;
   --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --nav-break: 1040px;    /* jen pro orientaci, v @media je zapsáno napevno */
+  --nav-break: 1240px;    /* jen pro orientaci, v @media je zapsáno napevno */
   color-scheme: light dark;
 }
 
@@ -121,17 +121,24 @@ p { margin: 0 0 1.1em; }
   position: sticky; top: 0; z-index: 50;
   border-bottom: 4px solid var(--lamp);
 }
+.site-header .wrap { width: min(1280px, 100% - 2 * var(--gutter)); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .brand {
-  font-family: var(--font-head); font-weight: 700; font-size: 1.6rem; letter-spacing: .04em;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-head); font-weight: 700; font-size: 1.45rem; letter-spacing: .04em;
   color: #fff; text-decoration: none; white-space: nowrap;
 }
 .brand:hover { color: var(--cream); }
+.brand-logo { display: block; height: 40px; width: auto; }
+/* na úzkém displeji zůstane jen logo, název je dál přístupný čtečkám */
+@media (max-width: 520px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
 
-.nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; align-items: center; }
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; align-items: center; }
 .nav-link {
-  display: block; color: var(--cream); text-decoration: none; background: none; border: 0;
-  font: inherit; font-size: .98rem; padding: 8px 12px; border-radius: var(--radius); cursor: pointer; text-align: left;
+  display: block; color: var(--cream); text-decoration: none; background: none; border: 0; white-space: nowrap;
+  font: inherit; font-size: .98rem; padding: 8px 10px; border-radius: var(--radius); cursor: pointer; text-align: left;
 }
 .nav-link:hover { background: rgba(255, 255, 255, .12); color: #fff; }
 .nav-link[aria-current="page"] { background: var(--green-500); color: #fff; }
@@ -208,6 +215,18 @@ p { margin: 0 0 1.1em; }
 .panel--narrow { max-width: 46em; margin-inline: auto; }
 .panel h2:first-child, .panel h3:first-child { margin-top: 0; }
 .stack > * + * { margin-top: 28px; }
+
+/* Naše činnost: odstavec a jeho fotky vedle sebe (na úzkém displeji pod sebou) */
+.split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.split .photos { grid-template-columns: repeat(2, 1fr); }
+.split .photo:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+.split .photo:first-child:nth-last-child(odd) img { aspect-ratio: 16 / 9; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; }
+  .split--reverse { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .split--reverse .panel { order: 2; }
+  .split .panel { position: sticky; top: 92px; }
+}
 
 
 /* 9  Historie (osa času) --------------------------------------------------- */
@@ -365,7 +384,7 @@ html.lb-open { overflow: hidden; }
 
 
 /* 17  Mobil a tablet ------------------------------------------------------- */
-@media (max-width: 1040px) {
+@media (max-width: 1240px) {
   .menu-btn { display: block; }
   .site-nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
