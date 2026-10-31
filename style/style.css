@@ -501,3 +501,9 @@ html.lb-open { overflow: hidden; }
   .hero-text { padding-top: 24px; padding-bottom: 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .collage-tile img { transition: none; } }
+
+/* varianta: pás fotek bez textu přes, text je celý pod ním */
+.collage { position: relative; inset: auto; height: clamp(180px, 24vw, 340px); z-index: 0; }
+.hero--collage::before { display: none; }
+.hero-text { padding-top: 32px; padding-bottom: 40px; }
+@media (max-width: 760px) { .collage { height: 150px; } }
