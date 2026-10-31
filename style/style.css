@@ -46,7 +46,7 @@
   --gutter: 16px;
   --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --nav-break: 1300px;    /* jen pro orientaci, v @media je zapsáno napevno */
+  --nav-break: 1340px;    /* jen pro orientaci, v @media je zapsáno napevno */
   color-scheme: light dark;
 }
 
@@ -176,6 +176,8 @@ p { margin: 0 0 1.1em; }
 }
 
 
+.tools { display: flex; gap: 8px; flex: none; }
+.theme-btn[aria-pressed="true"]#save-btn { background: rgba(255, 255, 255, .22); border-color: #fff; }
 .theme-btn {
   flex: none; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
   background: none; border: 1px solid rgba(255, 255, 255, .4); color: #fff; border-radius: var(--radius); cursor: pointer; padding: 0;
@@ -413,9 +415,9 @@ html.lb-open { overflow: hidden; }
 
 
 /* 17  Mobil a tablet ------------------------------------------------------- */
-@media (max-width: 1300px) {
+@media (max-width: 1340px) {
   .menu-btn { display: block; order: 3; }
-  .theme-btn { order: 2; margin-left: auto; }
+  .tools { order: 2; margin-left: auto; }
   .site-nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
     background: var(--green-900); padding: 8px 16px 16px; border-bottom: 4px solid var(--lamp);
@@ -462,32 +464,52 @@ html.lb-open { overflow: hidden; }
 /* kolážová fotka přes celou šířku na úvodní stránce: pás fotek, pod ním text.
    Pás má poměr stran daný počtem fotek (každá 4 : 3), aby se fotky neořezávaly. */
 .hero--collage { position: relative; padding: 0; background: linear-gradient(180deg, var(--green-100), var(--paper)); overflow: hidden; }
-.collage { position: relative; display: flex; gap: 3px; background: var(--green-900); aspect-ratio: 16 / 3; max-height: 420px; }
+.collage { position: relative; display: flex; background: var(--green-900); aspect-ratio: 4.9 / 1; max-height: 440px; }
 .collage > img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; display: block; }
 .collage > img:nth-child(n + 5) { display: none; }   /* 5. a další fotky jen ve skriptu (prolínání) */
 .collage::after {                                      /* lehké ztmavení fotek */
   content: ""; position: absolute; inset: 0; background: rgba(10, 26, 17, .22); pointer-events: none;
 }
-.hero-text { padding-top: 36px; padding-bottom: 44px; }
-.hero--collage h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 18em; margin-bottom: 16px; }
+.hero-head { padding-top: 32px; padding-bottom: 22px; }
+.hero-text { padding-top: 28px; padding-bottom: 44px; }
+.hero--collage h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.02; max-width: 18em; margin: 0; }
 .hero--collage .lead { max-width: 40em; margin-bottom: 24px; }
 
 /* celý pás se po několika sekundách plynule vymění za další sadu fotek (skript, bez něj stojí) */
-.collage-live { position: absolute; inset: 0; width: 100%; display: none; gap: 3px; }
+.collage-live { position: absolute; inset: 0; width: 100%; display: none; }
 .collage.is-live .collage-live { display: flex; }
 .collage.is-live > img { display: none; }
 .collage-tile { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; }
+/* jemný přechod mezi sousedními fotkami: každá další se zleva plynule prolíná přes předchozí */
+.collage-tile + .collage-tile {
+  margin-left: -40px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 40px);
+}
 .collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
 .collage-tile img.on { opacity: 1; }
 
 /* čím užší okno, tím méně fotek vedle sebe (3 na tabletu, 2 na telefonu) */
 @media (max-width: 1099px) {
-  .collage { aspect-ratio: 4 / 1; }
+  .collage { aspect-ratio: 3.7 / 1; }
   .collage > img:nth-child(n + 4), .collage-tile:nth-child(n + 4) { display: none; }
 }
 @media (max-width: 760px) {
-  .collage { aspect-ratio: 8 / 3; }
+  .collage { aspect-ratio: 2.4 / 1; }
+  .collage-tile + .collage-tile { margin-left: -28px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28px); mask-image: linear-gradient(90deg, transparent 0, #000 28px); }
   .collage > img:nth-child(n + 3), .collage-tile:nth-child(n + 3) { display: none; }
-  .hero-text { padding-top: 24px; padding-bottom: 32px; }
+  .hero-head { padding-top: 22px; padding-bottom: 16px; }
+  .hero-text { padding-top: 22px; padding-bottom: 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .collage-tile img { transition: none; } }
+
+/* spořič dat: v pásu jen jedna fotka, bez prolínání */
+html[data-save="on"] .collage { aspect-ratio: 3 / 1; max-height: 240px; }
+html[data-save="on"] .collage > img:nth-child(n + 2) { display: none; }
+
+/* spořič dat: odkaz v patičce a položka v menu na telefonu */
+.save-link { background: none; border: 0; padding: 0; font: inherit; color: #fff; text-decoration: underline; cursor: pointer; margin-right: 18px; }
+.save-link:hover { color: var(--cream); }
+.nav-save { display: none; }
+@media (max-width: 1340px) { .nav-save { display: list-item; } }
+#save-btn svg { width: 26px; height: 26px; stroke-width: 1.8; }

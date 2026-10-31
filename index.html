@@ -19,8 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/style.css?v=22">
-<script>try{var t=localStorage.getItem("kmk-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="style/style.css?v=24">
+<script>try{var d=document.documentElement,t=localStorage.getItem("kmk-theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t);var v=localStorage.getItem("kmk-save"),c=navigator.connection;if(v==="1"||(v===null&&c&&(c.saveData||/2g/.test(c.effectiveType||""))))d.setAttribute("data-save","on")}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -39,19 +39,26 @@
         <li><a class="nav-link" href="kontakty.html">Kontakty</a></li>
         <li><a class="nav-link" href="partneri.html">Partneři a sponzoři</a></li>
         <li><a class="nav-link nav-login" href="https://kmk.rumcajs.com/login"><img src="Obrazky/login.png" alt="">Log-in</a></li>
+        <li class="nav-save"><button class="nav-link" type="button" data-save-toggle hidden></button></li>
       </ul>
     </nav>
-    <button class="theme-btn" id="theme-btn" type="button" hidden aria-label="Přepnout tmavý a světlý režim" title="Přepnout tmavý a světlý režim"></button>
+    <div class="tools">
+      <button class="theme-btn" id="save-btn" data-save-toggle type="button" hidden aria-pressed="false" aria-label="Spořič dat" title="Spořič dat: méně fotek, méně přenesených dat"></button>
+      <button class="theme-btn" id="theme-btn" type="button" hidden aria-label="Přepnout tmavý a světlý režim" title="Přepnout tmavý a světlý režim"></button>
+    </div>
   </div>
 </header>
 
 <main id="obsah">
 <section class="hero hero--collage">
+  <div class="wrap hero-head">
+    <h1>Vítej na našich webových stránkách!</h1>
+  </div>
   <div class="collage" aria-hidden="true">
       <img src="Obrazky/galerie_vystavy2023/vystavy_2023-28.webp" alt="" decoding="async" fetchpriority="high">
-      <img src="Obrazky/galerie_kolejiste2025/kolejiste_2025-40.webp" alt="" decoding="async">
-      <img src="Obrazky/galerie_cestovni-kolejiste1/cestovni_kolejiste1-40.webp" alt="" decoding="async">
-      <img src="Obrazky/galerie_DD2025/DD_2025-7.webp" alt="" decoding="async">
+      <img src="Obrazky/galerie_kolejiste2025/kolejiste_2025-40.webp" alt="" decoding="async" loading="lazy">
+      <img src="Obrazky/galerie_cestovni-kolejiste1/cestovni_kolejiste1-40.webp" alt="" decoding="async" loading="lazy">
+      <img src="Obrazky/galerie_DD2025/DD_2025-7.webp" alt="" decoding="async" loading="lazy">
       <img src="Obrazky/galerie_osoblaha2024/osoblaha_2024-1.webp" alt="" decoding="async" loading="lazy">
       <img src="Obrazky/galerie_kolejiste2025/kolejiste_2025-12.webp" alt="" decoding="async" loading="lazy">
       <img src="Obrazky/galerie_DD2025/DD_2025-14.webp" alt="" decoding="async" loading="lazy">
@@ -123,7 +130,6 @@
       <img src="Obrazky/galerie_jerab2024/jerab_2024-8.webp" alt="" decoding="async" loading="lazy">
   </div>
   <div class="wrap hero-text">
-    <h1>Vítej na našich webových stránkách!</h1>
     <p class="lead">Jsme Klub malých kolejí, skupina mladých nadšenců, která se schází v klubovně na hlavním nádraží v Karviné. Věnujeme se modelové železnici nejen ve velikosti H0, společně budujeme klubové kolejiště – od pokládky kolejí, přes elektrické zapojení až po detailní modelování krajiny.</p>
     <div class="btns">
       <a class="btn btn--primary" href="Nase_cinnost.html">Co děláme</a>
@@ -173,10 +179,11 @@
       <a href="kontakty.html">Kontakty</a>
       <a href="partneri.html">Partneři a sponzoři</a>
       <a href="https://www.instagram.com/kmk_karvina/" target="_blank" rel="noopener">Instagram</a>
+      <button class="save-link" type="button" data-save-toggle hidden></button>
     </div>
   </div>
 </footer>
 
-<script src="script/scriptc.js?v=22" defer></script>
+<script src="script/scriptc.js?v=24" defer></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
    3  Prohlížeč fotografií (šipky, klávesnice, přejetí prstem)
    4  Aktuality (nejnovější 3 naplno, starší sbalené) a odkaz na úvodní stránce
    5  Přepínač tmavého a světlého režimu
+   7  Spořič dat (tlačítko v hlavičce)
    6  Kolážová fotka na úvodu: dlaždice se po jedné pomalu vymění za další fotku 
    ========================================================================== */
 (function () {
@@ -316,7 +317,7 @@
   /* 6  Kolážová fotka na úvodu ---------------------------------------------- */
   var collage = document.querySelector('.collage');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (collage && !reduce) {
+  if (collage && !reduce && document.documentElement.getAttribute('data-save') !== 'on') {
     var srcs = Array.prototype.map.call(collage.querySelectorAll(':scope > img'), function (i) { return i.getAttribute('src'); });
     var SLOTS = 4, INTERVAL = 6000;
     if (srcs.length > SLOTS) {
@@ -354,5 +355,27 @@
       document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
       start();
     }
+  }
+
+  /* 7  Spořič dat ---------------------------------------------------------- */
+  /* tlačítko v hlavičce (znak mobilních dat), odkaz v patičce a položka v menu na telefonu */
+  var saveBtns = document.querySelectorAll('[data-save-toggle]');
+  if (saveBtns.length) {
+    var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20v-3M7 20v-6M11 20v-9"/><path d="M16 12V4M13.8 6.2L16 4l2.2 2.2"/><path d="M20.5 4v8M18.3 9.8l2.2 2.2 2.2-2.2"/></svg>';
+    var saveOn = function () { return document.documentElement.getAttribute('data-save') === 'on'; };
+    var onClick = function () {
+      try { localStorage.setItem('kmk-save', saveOn() ? '0' : '1'); } catch (e) {}
+      location.reload();        /* nejjistější: stránka se načte rovnou v úsporném režimu */
+    };
+    Array.prototype.forEach.call(saveBtns, function (btn) {
+      btn.hidden = false;
+      if (btn.id === 'save-btn') {
+        btn.innerHTML = ICON;
+        btn.setAttribute('aria-pressed', saveOn() ? 'true' : 'false');
+      } else {
+        btn.textContent = saveOn() ? 'Spořič dat je zapnutý – vypnout' : 'Spořič dat: méně fotek, méně dat – zapnout';
+      }
+      btn.addEventListener('click', onClick);
+    });
   }
 })();
