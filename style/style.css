@@ -513,3 +513,49 @@ html[data-save="on"] .collage > img:nth-child(n + 2) { display: none; }
 .nav-save { display: none; }
 @media (max-width: 1340px) { .nav-save { display: list-item; } }
 #save-btn svg { width: 26px; height: 26px; stroke-width: 1.8; }
+
+/* nadcházející akce (pás na úvodu, sám se schová po datu) */
+.event-strip {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px;
+  background: var(--surface); border-left: 6px solid var(--green-500); border-radius: var(--radius);
+  padding: 14px 20px; box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.event-label { font-family: var(--font-head); font-weight: 700; font-size: 1.25rem; color: var(--heading); }
+.event-title { font-weight: 600; }
+.event-date { color: var(--ink-soft); font-size: .95rem; }
+section[hidden] { display: none; }
+
+/* poděkování partnerům */
+.thanks { text-align: center; }
+.thanks-title { font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; color: var(--heading); margin: 0 0 14px; }
+.thanks-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; }
+.thanks-logos a { display: flex; align-items: center; justify-content: center; background: var(--surface-logo); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 16px; height: 84px; }
+.thanks-logos a:hover { border-color: var(--green-500); }
+.thanks-logos img { max-height: 60px; max-width: 150px; width: auto; object-fit: contain; display: block; }
+
+/* kopírování kontaktů */
+.copy-btn {
+  display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
+  width: 28px; height: 28px; margin-left: 8px; padding: 0; background: none; color: var(--link);
+  border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer;
+}
+.copy-btn:hover { background: var(--green-100); }
+.copy-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.copy-btn.is-done { border-color: var(--green-500); color: var(--green-500); }
+.copy-note { margin-left: 8px; font-size: .88rem; color: var(--ink-soft); }
+
+/* tlačítko Nahoru */
+.to-top {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--green-700); color: #fff; border: 2px solid rgba(255, 255, 255, .7); cursor: pointer;
+  display: none; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+}
+.to-top.is-shown { display: flex; }
+.to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+html.lb-open .to-top { display: none; }
+
+/* přiblížení fotky v prohlížeči */
+.lb-fig { position: relative; z-index: 1; }
+.lb-fig img { touch-action: none; cursor: zoom-in; transform-origin: center center; will-change: transform; }
+.lb-fig img.is-zoomed { cursor: grab; transition: none; }
+.lb-btn { z-index: 3; }

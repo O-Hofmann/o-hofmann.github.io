@@ -19,8 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/style.css?v=23">
-<script>try{var t=localStorage.getItem("kmk-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="style/style.css?v=25">
+<script>try{var d=document.documentElement,t=localStorage.getItem("kmk-theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t);var v=localStorage.getItem("kmk-save"),c=navigator.connection;if(v==="1"||(v===null&&c&&(c.saveData||/2g/.test(c.effectiveType||""))))d.setAttribute("data-save","on")}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -39,9 +39,13 @@
         <li><a class="nav-link" href="kontakty.html">Kontakty</a></li>
         <li><a class="nav-link" href="partneri.html">Partneři a sponzoři</a></li>
         <li><a class="nav-link nav-login" href="https://kmk.rumcajs.com/login"><img src="Obrazky/login.png" alt="">Log-in</a></li>
+        <li class="nav-save"><button class="nav-link" type="button" data-save-toggle hidden></button></li>
       </ul>
     </nav>
-    <button class="theme-btn" id="theme-btn" type="button" hidden aria-label="Přepnout tmavý a světlý režim" title="Přepnout tmavý a světlý režim"></button>
+    <div class="tools">
+      <button class="theme-btn" id="save-btn" data-save-toggle type="button" hidden aria-pressed="false" aria-label="Spořič dat" title="Spořič dat: méně fotek, méně přenesených dat"></button>
+      <button class="theme-btn" id="theme-btn" type="button" hidden aria-label="Přepnout tmavý a světlý režim" title="Přepnout tmavý a světlý režim"></button>
+    </div>
   </div>
 </header>
 
@@ -150,10 +154,11 @@
       <a href="kontakty.html">Kontakty</a>
       <a href="partneri.html">Partneři a sponzoři</a>
       <a href="https://www.instagram.com/kmk_karvina/" target="_blank" rel="noopener">Instagram</a>
+      <button class="save-link" type="button" data-save-toggle hidden></button>
     </div>
   </div>
 </footer>
 
-<script src="script/scriptc.js?v=23" defer></script>
+<script src="script/scriptc.js?v=25" defer></script>
 </body>
 </html>
