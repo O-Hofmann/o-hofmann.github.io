@@ -574,3 +574,10 @@ html.lb-open .to-top { display: none; }
 }
 
 .lead--wide { max-width: none; }   /* věta přes celou šířku stránky */
+
+/* kontakty: adresa na více řádcích, odkazy s tučným popiskem nad nimi */
+.addr { display: block; margin-top: 2px; line-height: 1.5; }
+.contact-lines .link-label { display: block; color: var(--heading); }
+.contact-lines .link-line { display: inline-flex; align-items: center; }
+.contact-lines .link-line .ig { margin: 0 8px 0 0; vertical-align: baseline; flex: none; }
+.contact-lines li:has(.link-label) { margin-bottom: .8em; }
