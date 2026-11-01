@@ -158,14 +158,14 @@
 
   /* přiblížení fotky: dvojklik / dvojité klepnutí, kolečko myši, dva prsty; posun tažením */
   var zoom = { scale: 1, x: 0, y: 0, gesture: false };
-  var ptrs = {}, pinch = null, lastTap = 0;
+  var pinch = null, lastTap = 0, lastToggle = 0;
 
   function applyZoom() {
     lbImg.style.transform = zoom.scale > 1.001
       ? 'translate(' + zoom.x + 'px,' + zoom.y + 'px) scale(' + zoom.scale + ')' : '';
     lbImg.classList.toggle('is-zoomed', zoom.scale > 1.001);
   }
-  function resetZoom() { zoom.scale = 1; zoom.x = 0; zoom.y = 0; zoom.gesture = false; ptrs = {}; pinch = null; if (lbImg) applyZoom(); }
+  function resetZoom() { zoom.scale = 1; zoom.x = 0; zoom.y = 0; zoom.gesture = false; pinch = null; if (lbImg) applyZoom(); }
   function clampPan() {
     var mx = Math.max(0, (zoom.scale - 1) * lbImg.clientWidth / 2);
     var my = Math.max(0, (zoom.scale - 1) * lbImg.clientHeight / 2);
@@ -177,48 +177,68 @@
     if (zoom.scale <= 1.001) { zoom.scale = 1; zoom.x = 0; zoom.y = 0; } else { clampPan(); }
     applyZoom();
   }
-  function dist() {
-    var k = Object.keys(ptrs);
-    var a = ptrs[k[0]], b = ptrs[k[1]];
-    return Math.hypot(a.x - b.x, a.y - b.y);
-  }
+  function tdist(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
   function initZoom() {
-    lbImg.addEventListener('dblclick', function (e) { e.preventDefault(); setScale(zoom.scale > 1 ? 1 : 2.5); });
+    lbImg.addEventListener('dblclick', function (e) {
+      e.preventDefault();
+      if (Date.now() - lastToggle < 600) return;          /* dvojité klepnutí už vyřídil dotykový kód */
+      setScale(zoom.scale > 1 ? 1 : 2.5);
+    });
     lb.addEventListener('wheel', function (e) {
       e.preventDefault();
       setScale(zoom.scale * (e.deltaY < 0 ? 1.2 : 1 / 1.2));
     }, { passive: false });
-    /* posluchače jsou na celém prohlížeči, takže se dá přibližovat i prsty na tmavém pozadí */
+
+    /* myš: tažení přiblížené fotky */
+    var drag = null;
     lb.addEventListener('pointerdown', function (e) {
-      if (e.target.closest('.lb-btn')) return;
-      ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
-      var n = Object.keys(ptrs).length;
-      if (n === 2) { pinch = { d: dist(), s: zoom.scale }; zoom.gesture = true; }
-      if (n === 1 && e.pointerType === 'touch' && e.target === lbImg) {      /* dvojité klepnutí na fotku */
-        var now = Date.now();
-        if (now - lastTap < 300) { setScale(zoom.scale > 1 ? 1 : 2.5); lastTap = 0; } else { lastTap = now; }
-      }
+      if (e.pointerType !== 'mouse' || zoom.scale <= 1 || e.target.closest('.lb-btn')) return;
+      drag = { x: e.clientX, y: e.clientY };
     });
     lb.addEventListener('pointermove', function (e) {
-      var p = ptrs[e.pointerId];
-      if (!p) return;
-      var n = Object.keys(ptrs).length;
-      if (n === 2 && pinch) {
-        ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
-        setScale(pinch.s * dist() / pinch.d);
-      } else if (n === 1 && zoom.scale > 1) {
-        zoom.x += e.clientX - p.x; zoom.y += e.clientY - p.y;
-        ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+      if (!drag) return;
+      zoom.x += e.clientX - drag.x; zoom.y += e.clientY - drag.y;
+      drag = { x: e.clientX, y: e.clientY };
+      clampPan(); applyZoom();
+    });
+    var endDrag = function () { drag = null; };
+    lb.addEventListener('pointerup', endDrag);
+    lb.addEventListener('pointercancel', endDrag);
+
+    /* dotyk: dva prsty = přiblížení, jeden prst na přiblížené fotce = posun, dvojité klepnutí = přiblížit / zpět.
+       Používá se jen dotykové API (bez touch-action: none), jinak by prohlížeč zahazoval první klepnutí po přejetí prstem. */
+    var pan = null;
+    lb.addEventListener('touchstart', function (e) {
+      if (e.target.closest('.lb-btn')) return;
+      if (e.touches.length === 2) { pinch = { d: tdist(e.touches), s: zoom.scale }; zoom.gesture = true; pan = null; }
+      else if (e.touches.length === 1) {
+        pan = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        if (e.target === lbImg) {
+          var now = Date.now();
+          if (now - lastTap < 300) { setScale(zoom.scale > 1 ? 1 : 2.5); lastTap = 0; lastToggle = now; zoom.gesture = true; } else { lastTap = now; }
+        }
+      }
+    }, { passive: true });
+    lb.addEventListener('touchmove', function (e) {
+      if (e.touches.length === 2 && pinch) {
+        e.preventDefault();
+        setScale(pinch.s * tdist(e.touches) / pinch.d);
+      } else if (e.touches.length === 1 && zoom.scale > 1 && pan) {
+        e.preventDefault();
+        zoom.x += e.touches[0].clientX - pan.x; zoom.y += e.touches[0].clientY - pan.y;
+        pan = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         clampPan(); applyZoom();
       }
-    });
-    var up = function (e) {
-      delete ptrs[e.pointerId];
-      if (Object.keys(ptrs).length < 2) pinch = null;
-      if (!Object.keys(ptrs).length) { zoom.gesture = false; }
+    }, { passive: false });
+    var tEnd = function (e) {
+      if (e.touches.length < 2) pinch = null;
+      if (e.touches.length === 1) pan = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      if (e.touches.length === 0) { pan = null; setTimeout(function () { zoom.gesture = false; }, 0); }
     };
-    lb.addEventListener('pointerup', up);
-    lb.addEventListener('pointercancel', up);
+    lb.addEventListener('touchend', tEnd, { passive: true });
+    lb.addEventListener('touchcancel', tEnd, { passive: true });
+    /* Safari na iPhonu: zabránit přibližování celé stránky gestem */
+    lb.addEventListener('gesturestart', function (e) { e.preventDefault(); });
   }
 
   function render() {
