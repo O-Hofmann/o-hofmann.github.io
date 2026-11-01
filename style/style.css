@@ -572,3 +572,5 @@ html.lb-open .to-top { display: none; }
 @media (hover: hover) and (pointer: fine) {
   #save-btn, .save-link { display: none; }
 }
+
+.lead--wide { max-width: none; }   /* věta přes celou šířku stránky */
