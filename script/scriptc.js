@@ -184,21 +184,22 @@
   }
   function initZoom() {
     lbImg.addEventListener('dblclick', function (e) { e.preventDefault(); setScale(zoom.scale > 1 ? 1 : 2.5); });
-    lbImg.addEventListener('wheel', function (e) {
+    lb.addEventListener('wheel', function (e) {
       e.preventDefault();
       setScale(zoom.scale * (e.deltaY < 0 ? 1.2 : 1 / 1.2));
     }, { passive: false });
-    lbImg.addEventListener('pointerdown', function (e) {
+    /* posluchače jsou na celém prohlížeči, takže se dá přibližovat i prsty na tmavém pozadí */
+    lb.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.lb-btn')) return;
       ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
-      lbImg.setPointerCapture(e.pointerId);
       var n = Object.keys(ptrs).length;
       if (n === 2) { pinch = { d: dist(), s: zoom.scale }; zoom.gesture = true; }
-      if (n === 1 && e.pointerType === 'touch') {              /* dvojité klepnutí */
+      if (n === 1 && e.pointerType === 'touch' && e.target === lbImg) {      /* dvojité klepnutí na fotku */
         var now = Date.now();
         if (now - lastTap < 300) { setScale(zoom.scale > 1 ? 1 : 2.5); lastTap = 0; } else { lastTap = now; }
       }
     });
-    lbImg.addEventListener('pointermove', function (e) {
+    lb.addEventListener('pointermove', function (e) {
       var p = ptrs[e.pointerId];
       if (!p) return;
       var n = Object.keys(ptrs).length;
@@ -214,10 +215,10 @@
     var up = function (e) {
       delete ptrs[e.pointerId];
       if (Object.keys(ptrs).length < 2) pinch = null;
-      if (!Object.keys(ptrs).length) setTimeout(function () { zoom.gesture = false; }, 60);
+      if (!Object.keys(ptrs).length) { zoom.gesture = false; }
     };
-    lbImg.addEventListener('pointerup', up);
-    lbImg.addEventListener('pointercancel', up);
+    lb.addEventListener('pointerup', up);
+    lb.addEventListener('pointercancel', up);
   }
 
   function render() {
@@ -470,6 +471,10 @@
   }
   Array.prototype.forEach.call(document.querySelectorAll('main a[href^="mailto:"], main a[href^="tel:"]'), function (a) {
     var text = a.textContent.trim();
+    var wrap = document.createElement('span');
+    wrap.className = 'copy-wrap';
+    a.parentNode.insertBefore(wrap, a);
+    wrap.appendChild(a);                       /* odkaz a tlačítko drží pohromadě, tlačítko neskočí na další řádek */
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'copy-btn'; b.innerHTML = COPY_ICON;
     b.setAttribute('aria-label', 'Kopírovat: ' + text); b.title = 'Kopírovat';
@@ -477,12 +482,12 @@
     note.className = 'copy-note'; note.setAttribute('role', 'status');
     b.addEventListener('click', function () {
       copyText(text, function () {
-        b.classList.add('is-done'); note.textContent = 'Zkopírováno';
-        setTimeout(function () { b.classList.remove('is-done'); note.textContent = ''; }, 1800);
+        b.classList.add('is-done'); note.textContent = 'Zkopírováno'; note.classList.add('is-on');
+        setTimeout(function () { b.classList.remove('is-done'); note.classList.remove('is-on'); }, 1800);
       });
     });
-    a.insertAdjacentElement('afterend', b);
-    b.insertAdjacentElement('afterend', note);
+    wrap.appendChild(b);
+    wrap.appendChild(note);
   });
 
   /* tlačítko Nahoru */

@@ -319,6 +319,7 @@ p { margin: 0 0 1.1em; }
   background: rgba(10, 22, 16, .97); padding: 56px 72px;
 }
 .lb[hidden] { display: none; }
+.lb { touch-action: none; }          /* přiblížení řeší prohlížeč fotek, ne celá stránka */
 .lb-fig { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .lb-fig img { max-width: 100%; max-height: calc(100vh - 170px); max-height: calc(100dvh - 170px); width: auto; object-fit: contain; border-radius: 3px; transition: opacity .15s; }
 .lb-fig.is-loading img { opacity: .25; }
@@ -464,7 +465,7 @@ html.lb-open { overflow: hidden; }
 /* kolážová fotka přes celou šířku na úvodní stránce: pás fotek, pod ním text.
    Pás má poměr stran daný počtem fotek (každá 4 : 3), aby se fotky neořezávaly. */
 .hero--collage { position: relative; padding: 0; background: linear-gradient(180deg, var(--green-100), var(--paper)); overflow: hidden; }
-.collage { position: relative; display: flex; background: var(--green-900); aspect-ratio: 4.9 / 1; max-height: 440px; }
+.collage { position: relative; display: flex; width: 100%; background: var(--green-900); aspect-ratio: 4.9 / 1; max-height: 440px; }
 .collage > img { flex: 1 1 0; min-width: 0; height: 100%; object-fit: cover; display: block; }
 .collage > img:nth-child(n + 5) { display: none; }   /* 5. a další fotky jen ve skriptu (prolínání) */
 .collage::after {                                      /* lehké ztmavení fotek */
@@ -534,15 +535,22 @@ section[hidden] { display: none; }
 .thanks-logos img { max-height: 60px; max-width: 150px; width: auto; object-fit: contain; display: block; }
 
 /* kopírování kontaktů */
+.copy-wrap, .person .copy-wrap { position: relative; display: inline-flex; align-items: center; max-width: 100%; vertical-align: middle; }
+.copy-wrap a { min-width: 0; overflow-wrap: anywhere; }
 .copy-btn {
-  display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
   width: 28px; height: 28px; margin-left: 8px; padding: 0; background: none; color: var(--link);
   border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer;
 }
 .copy-btn:hover { background: var(--green-100); }
 .copy-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .copy-btn.is-done { border-color: var(--green-500); color: var(--green-500); }
-.copy-note { margin-left: 8px; font-size: .88rem; color: var(--ink-soft); }
+.copy-note {                       /* bublina nad tlačítkem, nemění rozložení řádku */
+  position: absolute; right: 0; bottom: calc(100% + 4px); white-space: nowrap; pointer-events: none;
+  background: var(--green-900); color: #fff; font-size: .85rem; padding: 3px 9px; border-radius: var(--radius);
+  opacity: 0; transition: opacity .15s;
+}
+.copy-note.is-on { opacity: 1; }
 
 /* tlačítko Nahoru */
 .to-top {
@@ -559,3 +567,8 @@ html.lb-open .to-top { display: none; }
 .lb-fig img { touch-action: none; cursor: zoom-in; transform-origin: center center; will-change: transform; }
 .lb-fig img.is-zoomed { cursor: grab; transition: none; }
 .lb-btn { z-index: 3; }
+
+/* spořič dat je určen pro telefony a tablety; na počítači s myší se nezobrazuje */
+@media (hover: hover) and (pointer: fine) {
+  #save-btn, .save-link { display: none; }
+}
