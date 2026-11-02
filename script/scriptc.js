@@ -319,6 +319,23 @@
     if (cap && img && cap.textContent.trim()) img.alt = cap.textContent.trim();
   });
 
+  /* Náhled chybí (ještě nebyl vytvořen / nahrán)? Použije se původní fotka. */
+  document.addEventListener('error', function (e) {
+    var im = e.target;
+    if (!im || im.tagName !== 'IMG' || im.getAttribute('data-nofb')) return;
+    var a = im.closest && im.closest('.photo a');
+    if (a) { im.setAttribute('data-nofb', '1'); im.src = a.getAttribute('href'); }
+    else if (im.closest && im.closest('.folder-cover')) {
+      im.setAttribute('data-nofb', '1');
+      im.src = im.getAttribute('src').replace('Obrazky_nahledy/', 'Obrazky/').replace(/_nahled\.webp$/, '.webp');
+    }
+  }, true);
+  Array.prototype.forEach.call(document.querySelectorAll('.photo img, .folder-cover img'), function (im) {
+    if (im.complete && im.naturalWidth === 0 && im.getAttribute('src')) {   // chyba nastala dřív než skript
+      var s = im.getAttribute('src'); im.removeAttribute('src'); im.src = s;
+    }
+  });
+
   /* 4  Aktuality ------------------------------------------------------------ */
   var FULL_POSTS = 3;   /* kolik nejnovějších příspěvků zůstane rozbalených */
 
