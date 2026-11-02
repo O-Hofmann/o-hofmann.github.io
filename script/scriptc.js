@@ -111,7 +111,7 @@
 
 
   /* 3  Prohlížeč fotografií ------------------------------------------------ */
-  var lb, lbImg, lbCap, lbCount, lbFig, lbClose, lbPrev, lbNext;
+  var lb, lbImg, lbCap, lbCount, lbFull, lbFig, lbClose, lbPrev, lbNext;
   var items = [], index = 0, lastFocus = null, touchX = null;
 
   function lbOpen() { return lb && !lb.hidden; }
@@ -126,7 +126,7 @@
     lb.innerHTML =
       '<button class="lb-btn lb-close" type="button" aria-label="Zavřít">×</button>' +
       '<button class="lb-btn lb-prev" type="button" aria-label="Předchozí fotografie">‹</button>' +
-      '<figure class="lb-fig"><img alt=""><figcaption><span class="lb-cap"></span><span class="lb-count"></span></figcaption></figure>' +
+      '<figure class="lb-fig"><img alt=""><figcaption><span class="lb-cap"></span><span class="lb-count"></span><button class="lb-full" type="button" hidden>Načíst plnou kvalitu</button></figcaption></figure>' +
       '<button class="lb-btn lb-next" type="button" aria-label="Další fotografie">›</button>';
     document.body.appendChild(lb);
 
@@ -134,6 +134,7 @@
     lbImg = lb.querySelector('img');
     lbCap = lb.querySelector('.lb-cap');
     lbCount = lb.querySelector('.lb-count');
+    lbFull = lb.querySelector('.lb-full');
     lbClose = lb.querySelector('.lb-close');
     lbPrev = lb.querySelector('.lb-prev');
     lbNext = lb.querySelector('.lb-next');
@@ -145,6 +146,13 @@
       if (e.target === lb) close();
     });
     lbImg.addEventListener('load', function () { lbFig.classList.remove('is-loading'); });
+    /* Spořič dat: v prohlížeči se ukazuje malý náhled, velká fotka se stáhne až tlačítkem. */
+    lbFull.addEventListener('click', function () { items[index].full = true; render(); });
+    /* Chybí-li náhled, použije se původní fotka. */
+    lbImg.addEventListener('error', function () {
+      var it = items[index];
+      if (it && it.thumb && !it.full) { it.full = true; render(); }
+    });
     initZoom();
     lb.addEventListener('touchstart', function (e) { touchX = e.touches.length === 1 ? e.changedTouches[0].clientX : null; }, { passive: true });
     lb.addEventListener('touchend', function (e) {
@@ -192,7 +200,7 @@
     /* myš: tažení přiblížené fotky */
     var drag = null;
     lb.addEventListener('pointerdown', function (e) {
-      if (e.pointerType !== 'mouse' || zoom.scale <= 1 || e.target.closest('.lb-btn')) return;
+      if (e.pointerType !== 'mouse' || zoom.scale <= 1 || e.target.closest('.lb-btn, .lb-full')) return;
       drag = { x: e.clientX, y: e.clientY };
     });
     lb.addEventListener('pointermove', function (e) {
@@ -209,7 +217,7 @@
        Používá se jen dotykové API (bez touch-action: none), jinak by prohlížeč zahazoval první klepnutí po přejetí prstem. */
     var pan = null;
     lb.addEventListener('touchstart', function (e) {
-      if (e.target.closest('.lb-btn')) return;
+      if (e.target.closest('.lb-btn, .lb-full')) return;
       if (e.touches.length === 2) { pinch = { d: tdist(e.touches), s: zoom.scale }; zoom.gesture = true; pan = null; }
       else if (e.touches.length === 1) {
         pan = { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -245,12 +253,15 @@
     resetZoom();
     var it = items[index];
     lbFig.classList.add('is-loading');
-    lbImg.src = it.href;
+    var saver = document.documentElement.getAttribute('data-save') === 'on';
+    var useThumb = saver && it.thumb && it.thumb !== it.href && !it.full;
+    lbImg.src = useThumb ? it.thumb : it.href;
+    lbFull.hidden = !useThumb;
     lbImg.alt = it.caption;
     lbCap.textContent = it.caption;
     lbCount.textContent = (index + 1) + ' / ' + items.length;
     [index - 1, index + 1].forEach(function (i) {
-      if (items[i]) { var pre = new Image(); pre.src = items[i].href; }
+      if (items[i] && document.documentElement.getAttribute('data-save') !== 'on') { var pre = new Image(); pre.src = items[i].href; }
     });
   }
 
@@ -269,6 +280,7 @@
       var img = a.querySelector('img');
       return {
         href: a.getAttribute('href'),
+        thumb: img ? img.getAttribute('src') : '',
         caption: cap ? cap.textContent.trim() : (img ? img.alt : '')
       };
     });

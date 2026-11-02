@@ -581,3 +581,14 @@ html.lb-open .to-top { display: none; }
 .contact-lines .link-line { display: inline-flex; align-items: center; }
 .contact-lines .link-line .ig { margin: 0 8px 0 0; vertical-align: baseline; flex: none; }
 .contact-lines li:has(.link-label) { margin-bottom: .8em; }
+
+/* Odkazy „Navigovat“ u adresy */
+.contact-lines .nav-links { line-height: 1.9; }
+.contact-lines .nav-links a { display: inline-block; padding: 6px 2px; }
+
+/* Spořič dat: tlačítko pro načtení plné kvality fotky v prohlížeči */
+.lb-full {
+  display: block; margin: 8px auto 0; padding: 10px 18px; min-height: 44px; border: 0; border-radius: 8px;
+  background: var(--lamp, #e0a526); color: #123524; font: inherit; font-weight: 600; cursor: pointer;
+}
+.lb-full[hidden] { display: none; }
